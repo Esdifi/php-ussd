@@ -10,6 +10,7 @@ use Dbilovd\PHUSSD\Pages\Exception 	as ExceptionPage;
 use Dbilovd\PHUSSD\Traits\InteractsWithSession;
 use Dbilovd\PHUSSD\Traits\MakesSessionManagers;
 use Dbilovd\PHUSSD\Traits\MakesUSSDRequestHandler;
+use Dbilovd\PHUSSD\Traits\ProcessesUserResponse;
 use Dbilovd\PHUSSD\Traits\ThrowsExceptions;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class BaseController extends Controller
 	use InteractsWithSession,
 		MakesUSSDRequestHandler,
 		MakesSessionManagers,
+		ProcessesUserResponse,
 		ThrowsExceptions;
 	
 	/**
@@ -119,16 +121,4 @@ class BaseController extends Controller
 
 		return $response;
 	}
-
-	/**
-	 * [extractUserResponseFromUSSDString description]
-	 * @param  [type] $ussdString [description]
-	 * @return [type]             [description]
-	 */
-	protected function extractUserResponseFromUSSDString ($ussdString)
-	{
-		$responses = explode('*', $ussdString);
-		return count($responses) > 0 ? $responses[ count($responses) - 1 ] : '';
-	}
-
 }

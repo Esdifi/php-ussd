@@ -21,5 +21,8 @@
                 "Dbilovd\\PHUSSD\\LaravelServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
