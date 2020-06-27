@@ -14,5 +14,12 @@
             "Dbilovd\\PHUSSD\\": "src/"
         }
     },
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dbilovd\\PHUSSD\\LaravelServiceProvider"
+            ]
+        }
+    }
 }

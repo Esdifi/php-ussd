@@ -1,0 +1,5 @@
+<?php
+
+return [
+	'defaultServiceProvider'	=> 'general'
+];
