@@ -56,7 +56,21 @@ class BaseRequest implements Requests
 	 */
 	public function __construct()
 	{
-		$this->request = request();
+		$this->setRequestFromHTTP();
+	}
+
+	/**
+	 * Set Request from HTTP request received
+	 *
+	 * @return void
+	 */
+	public function setRequestFromHTTP()
+	{
+		if (function_exists('request')) {
+			$this->request = request();
+		} else {
+			$this->request = json_decode(json_encode([]));
+		}
 	}
 
 	/**

@@ -2,9 +2,9 @@
 
 namespace Dbilovd\PHUSSD\Traits;
 
+use Dbilovd\PHUSSD\Helpers\Configuarations;
 use Dbilovd\PHUSSD\Requests\BaseRequest;
 use Dbilovd\PHUSSD\Requests\HubtelRequest;
-use Illuminate\Support\Facades\Config;
 
 trait MakesUSSDRequestHandler
 {
@@ -14,9 +14,9 @@ trait MakesUSSDRequestHandler
 	 * 
 	 * @return \Dbilovd\PHUSSD\Contracts\Requests
 	 */
-	protected function makeRequest ()
+	public function makeRequest (Configuarations $config)
 	{
-		$activeRequestConfig = Config("phussd.defaultServiceProvider");
+		$activeRequestConfig = $config->getConfigValue("phussd.defaultServiceProvider");
 
 		$requestClass = false;
 		switch (strtolower($activeRequestConfig)) {
