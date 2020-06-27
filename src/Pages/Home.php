@@ -24,8 +24,8 @@ class Home extends BasePage
 	 * @var Array
 	 */
 	protected $menus = [
-		"1" => "Issue Payment Reciept",
-		"2" => "Check Balance",
+		"1" => "Continue",
+		"2" => "Cancel",
 	];
 
 	/**
@@ -40,7 +40,7 @@ class Home extends BasePage
 			$value = "{$key}. $value";
 		});
 		$menus = implode("\r\n", $menus);
-		return "Welcome to LaNMMA RMS by ActionAid\r\n\r\n{$menus}";
+		return "Welcome to PHP USSD (PhUSSD) \r\n\r\n{$menus}";
 	}
 
 	/**

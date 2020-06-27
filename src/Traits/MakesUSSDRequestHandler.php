@@ -16,7 +16,7 @@ trait MakesUSSDRequestHandler
 	 */
 	protected function makeRequest ()
 	{
-		$activeRequestConfig = Config("ussd.defaultServiceProvider");
+		$activeRequestConfig = Config("phussd.defaultServiceProvider");
 
 		$requestClass = false;
 		switch (strtolower($activeRequestConfig)) {

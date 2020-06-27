@@ -2,7 +2,6 @@
 
 namespace Dbilovd\PHUSSD\Pages;
 
-use Dbilovd\PHUSSD\Contracts\Requests;
 use Dbilovd\PHUSSD\Contracts\Pages;
 use Illuminate\Support\Facades\Redis;
 
@@ -105,10 +104,10 @@ abstract class BasePage implements Pages
 			$existingData->{$this->dataFieldKey} = $preparedUserResponse;
 
 			Redis::hSet($sessionId, "data", json_encode($existingData));
+		}
 
-			if (method_exists($this, 'fireEvents')) {
-				$this->fireEvents($sessionId);
-			}
+		if (method_exists($this, 'fireEvents')) {
+			$this->fireEvents($sessionId);
 		}
 		
 		return true;
