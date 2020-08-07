@@ -2,8 +2,9 @@
 
 namespace Dbilovd\PHUSSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\Pages;
-use Dbilovd\PHUSSD\Pages\Home;
+use Dbilovd\PHUSSD\Contracts\PagesContract;
+use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
 use Dbilovd\PHUSSD\Traits\InteractsWithSession;
 
 class PagesFactory
@@ -18,30 +19,40 @@ class PagesFactory
 	protected $request;
 
 	/**
-	 * Class name of page
+	 * Config
 	 * 
+	 * @var
+	 */
+	protected $config;
+
+	/**
+	 * Class name of page
+	 *
 	 * @var String
 	 */
 	protected $initialPageClass;
 
-	/**
-	 * Constructor
-	 *
-	 */
-	public function __construct($request)
+    /**
+     * Constructor
+     *
+     * @param $request
+     * @param ConfigurationManagerContract $config
+     */
+	public function __construct(GatewayProviderRequestContract $request, ConfigurationManagerContract $config)
 	{
 		$this->request = $request;
+		$this->config = $config;
 	}
 
     /**
      * Make and return a USSD Page
      *
      * @param $type
-     * @param Pages|null $previousPage
+     * @param PagesContract|null $previousPage
      * @param null $userResponse
-     * @return Pages A class that implements the Pages contract
+     * @return PagesContract A class that implements the Pages contract
      */
-	public function make($type, Pages $previousPage = null, $userResponse = null) : Pages
+	public function make($type, PagesContract $previousPage = null, $userResponse = null) : PagesContract
 	{
 		switch ($type) {
 			case 'subsequent':
@@ -58,9 +69,9 @@ class PagesFactory
 	/**
 	 * Instantiate and return the initial page
 	 *
-	 * @return Pages
+	 * @return PagesContract
 	 */
-	protected function initialPage(): Pages
+	protected function initialPage(): PagesContract
 	{
 	    $initialPageClassName = $this->getInitialPageClass();
 		return (new $initialPageClassName($this->request));
@@ -69,11 +80,11 @@ class PagesFactory
     /**
      * Handle requests that are not the initial, cancellation or timeout requests
      *
-     * @param Pages $previousPage
+     * @param PagesContract $previousPage
      * @param $userResponse
-     * @return Pages Response string
+     * @return PagesContract Response string
      */
-	protected function subsequentPages(Pages $previousPage, $userResponse): Pages
+	protected function subsequentPages(PagesContract $previousPage, $userResponse): PagesContract
 	{
 		$nextPageClassName = $previousPage->next($userResponse);
 		
@@ -84,24 +95,19 @@ class PagesFactory
 		return (new $nextPageClassName($this->request, $userResponse));
 	}
 
-	/**
-	 * Set the class name of the initial page
-	 *
-	 * @param String $className
-	 * @return void
-	 */
-	public function setInitialPageClass(String $className) : void
-	{
-		$this->initialPageClass = $className;
-	}
-
     /**
      *
      *
      * @return String
      */
-    public function getInitialPageClass(): String
+    protected function getInitialPageClass(): String
     {
-        return $this->initialPageClass;
+		$initialPage = $this->config->get("phussd.initialPageClass");
+
+		if (! $initialPage) {
+		    $initialPage = \Dbilovd\PHUSSD\Pages\Home::class;
+        }
+
+		return $initialPage;
     }
 }

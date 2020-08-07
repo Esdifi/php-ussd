@@ -2,12 +2,12 @@
 
 namespace Dbilovd\PHUSSD\Contracts;
 
-interface Pages
+interface PagesContract
 {
 	/**
 	 * Returns a list of sub menus
 	 *
-	 * @return Array Child menus
+	 * @return array Child menus
 	 */
 	function menus();
 
@@ -36,23 +36,24 @@ interface Pages
 	 * Return an instance of the next child class depending on the user input
 	 *
 	 * @param String $userResponse The user's response to being presented this page
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
+	 * @return PagesContract
 	 */
 	public function next ($userResponse);
 
-	/**
-	 * Save the user response
-	 *
-	 * @param String $userResponse The user's response to being presented this page
-	 * @return Boolean
-	 */
+    /**
+     * Save the user response
+     *
+     * @param String $userResponse The user's response to being presented this page
+     * @param $sessionId
+     * @return bool
+     */
 	public function save ($userResponse, $sessionId);
 
 	/**
 	 * Check if User Response is valid
 	 *
-	 * @param Sttring 	$userResponse Response provided by the user
-	 * @return Boolean 	Response content
+	 * @param string 	$userResponse Response provided by the user
+	 * @return bool 	Response content
 	 */
 	public function validUserResponse ($userResponse);
 }

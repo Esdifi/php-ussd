@@ -2,10 +2,11 @@
 
 namespace Dbilovd\PHUSSD\Pages;
 
-use Dbilovd\PHUSSD\Contracts\Pages;
+use Dbilovd\PHUSSD\Contracts\PagesContract;
+use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
 use Illuminate\Support\Facades\Redis;
 
-abstract class BasePage implements Pages
+abstract class BasePage implements PagesContract
 {
 	/**
 	 * Request object
@@ -14,6 +15,11 @@ abstract class BasePage implements Pages
 	 */
 	public $request;
 
+    /**
+     * Default response type
+     *
+     * @var string
+     */
 	public $responseType = 'continue';
 
 	/**
@@ -21,7 +27,7 @@ abstract class BasePage implements Pages
 	 * 
 	 * @var String
 	 */
-	public $message = "Default Message";
+	public $message = "Hello there, \r\nthis is a USSD page.";
 
 	/**
 	 * Next page class name
@@ -43,7 +49,7 @@ abstract class BasePage implements Pages
      * @param $request
      * @param null $previousPagesUserResponse
      */
-	public function __construct($request, $previousPagesUserResponse = null)
+	public function __construct(GatewayProviderRequestContract $request, $previousPagesUserResponse = null)
 	{
 		$this->request = $request;
 		$this->previousPagesUserResponse = $previousPagesUserResponse;
@@ -81,7 +87,7 @@ abstract class BasePage implements Pages
 	 * Return an instance of the next child class depending on the user input
 	 *
 	 * @param String $userResponse 
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
+	 * @return \Dbilovd\PHUSSD\Contracts\PagesContract
 	 */
 	public function next ($userResponse)
 	{

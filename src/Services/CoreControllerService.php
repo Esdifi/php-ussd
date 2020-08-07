@@ -2,7 +2,7 @@
 
 namespace Dbilovd\PHUSSD\Services;
 
-use Dbilovd\PHUSSD\Contracts\Pages;
+use Dbilovd\PHUSSD\Contracts\PagesContract;
 use Dbilovd\PHUSSD\Contracts\SessionManagersInterface;
 use Dbilovd\PHUSSD\Factories\PagesFactory;
 use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
@@ -49,16 +49,29 @@ class CoreControllerService
     private $gatewayResponse;
 
     /**
+     * Configuration manager
+     *
+     * @var
+     */
+    private $pagesFactoryManager;
+
+    /**
      * Constructor
      *
      * @param GatewayProviderContract $gatewayProvider
      * @param SessionManagersInterface $sessionManager
+     * @param PagesFactory $pagesFactoryManager
      */
-	public function __construct(GatewayProviderContract $gatewayProvider, SessionManagersInterface $sessionManager)
+	public function __construct(
+	    GatewayProviderContract $gatewayProvider,
+        SessionManagersInterface $sessionManager,
+        PagesFactory $pagesFactoryManager
+    )
 	{
 		$this->gatewayRequest = $gatewayProvider->getRequest();
 		$this->gatewayResponse = $gatewayProvider->getResponse();
 		$this->sessionManager = $sessionManager;
+		$this->pagesFactoryManager = $pagesFactoryManager;
 	}
 	
 	/**
@@ -92,9 +105,7 @@ class CoreControllerService
             }
 
             if ($this->gatewayRequest->isInitialRequest()) {
-                $pageFactory = (new PagesFactory($this->gatewayRequest));
-                $pageFactory->setInitialPageClass($this->initialPageClassName);
-                $page = $pageFactory->make('initial');
+                $page = $this->pagesFactoryManager->make('initial');
 		        $this->sessionSetLastPage(get_class($page));
             }
 
@@ -120,7 +131,7 @@ class CoreControllerService
 	/**
 	 * Get response for this request
 	 *
-	 * @return Pages|bool Instance of page to return or false
+	 * @return PagesContract|bool Instance of page to return or false
      *
      * @throws Exception
 	 */
@@ -145,8 +156,7 @@ class CoreControllerService
 		    $this->throwErrorWhileSavingResponseException();
 		}
 
-		$page = (new PagesFactory($this->gatewayRequest))
-            ->make('subsequent', $previousPage, $userResponse);
+		$page = $this->pagesFactoryManager->make('subsequent', $previousPage, $userResponse);
 
 		if (!$page) {
 			$this->throwInvalidUserResponseException();
