@@ -140,6 +140,11 @@ class Request implements GatewayProviderRequestContract
      */
     public function getUserResponseFromUSSDString()
     {
+        $ussdString = $this->getUSSDString();
+        if (strpos($ussdString, '*') === false) {
+            return $ussdString;
+        }
+
         $responses = explode('*', $this->getUSSDString());
         return count($responses) > 1 ? $responses[ count($responses) - 1 ] : false;
     }
