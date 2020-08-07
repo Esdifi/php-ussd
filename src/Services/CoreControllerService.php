@@ -16,97 +16,96 @@ use Exception;
 
 class CoreControllerService
 {
-	use InteractsWithSession,
-		ProcessesUserResponse,
-		ThrowsExceptions;
-	
-	/**
-	 * Session Manager
-	 * 	
-	 * @var SessionManagersInterface
-	 */
-	protected $sessionManager;
-
-	/**
-	 * Name of class to use as initial page
-	 * 
-	 * @var String
-	 */
-	public $initialPageClassName = \Dbilovd\PHP_USSD\Pages\Home::class;
+    use InteractsWithSession,
+        ProcessesUserResponse,
+        ThrowsExceptions;
 
     /**
-     * Gateway Request object
+     * Session Manager.
+     *
+     * @var SessionManagersInterface
+     */
+    protected $sessionManager;
+
+    /**
+     * Name of class to use as initial page.
+     *
+     * @var string
+     */
+    public $initialPageClassName = \Dbilovd\PHP_USSD\Pages\Home::class;
+
+    /**
+     * Gateway Request object.
      *
      * @var GatewayProviderRequestContract
      */
     private $gatewayRequest;
 
     /**
-     * Gateway Response object
+     * Gateway Response object.
      *
      * @var GatewayProviderResponseContract
      */
     private $gatewayResponse;
 
     /**
-     * Configuration manager
+     * Configuration manager.
      *
      * @var
      */
     private $pagesFactoryManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param GatewayProviderContract $gatewayProvider
      * @param SessionManagersInterface $sessionManager
      * @param PagesFactory $pagesFactoryManager
      */
-	public function __construct(
-	    GatewayProviderContract $gatewayProvider,
+    public function __construct(
+        GatewayProviderContract $gatewayProvider,
         SessionManagersInterface $sessionManager,
         PagesFactory $pagesFactoryManager
-    )
-	{
-		$this->gatewayRequest = $gatewayProvider->getRequest();
-		$this->gatewayResponse = $gatewayProvider->getResponse();
-		$this->sessionManager = $sessionManager;
-		$this->pagesFactoryManager = $pagesFactoryManager;
-	}
-	
-	/**
-	 * Handle HTTP requests to base endpoint
-	 *
-	 * @return mixed
-	 */
-	public function handle()
-	{
-		/* 
-		# - Generate Initialise USSD Gateway Request Processor based on config value 
-		*/
-	
-		# - Checks if the request is valid, if not, throws exception
-		# - Initialise Session manager to use for this particular request
-		# - Initialise USSD session
-		# - Based on Session and Gatway process, construct response to send back to client
-		# - Format and return response
+    ) {
+        $this->gatewayRequest = $gatewayProvider->getRequest();
+        $this->gatewayResponse = $gatewayProvider->getResponse();
+        $this->sessionManager = $sessionManager;
+        $this->pagesFactoryManager = $pagesFactoryManager;
+    }
+
+    /**
+     * Handle HTTP requests to base endpoint.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        /*
+        # - Generate Initialise USSD Gateway Request Processor based on config value
+        */
+
+        // - Checks if the request is valid, if not, throws exception
+        // - Initialise Session manager to use for this particular request
+        // - Initialise USSD session
+        // - Based on Session and Gatway process, construct response to send back to client
+        // - Format and return response
 
         $page = false;
 
-		try {
-            if (!$this->gatewayRequest->isValidRequest()) {
-                throw new Exception("Error: Bad Request");
+        try {
+            if (! $this->gatewayRequest->isValidRequest()) {
+                throw new Exception('Error: Bad Request');
             }
             if ($this->gatewayRequest->isCancellationRequest()) {
-                throw new Exception("You cancelled the request.");
+                throw new Exception('You cancelled the request.');
             }
             if ($this->gatewayRequest->isTimeoutRequest()) {
-                throw new Exception("Timeout: You took too long to respond. Kindly try again.");
+                throw new Exception('Timeout: You took too long to respond. Kindly try again.');
             }
 
             if ($this->gatewayRequest->isInitialRequest()) {
                 $page = $this->pagesFactoryManager->make('initial');
-		        $this->sessionSetLastPage(get_class($page));
+                $this->sessionSetLastPage(get_class($page));
             }
 
             $this->initialiseSession();
@@ -114,56 +113,56 @@ class CoreControllerService
             $page = $page ?: $this->constructResponsePage();
 
             if (! $page) {
-                throw new Exception("Error: Could not construct new page.");
+                throw new Exception('Error: Could not construct new page.');
             }
-		} catch (Exception $e) {
-			$page = new ExceptionPage($this->gatewayRequest);
-			$page->setMessage($e->getMessage());
-		}
-
-		// Construct Response based on page to be returned
-        $response = $this->gatewayResponse->format($page);
-
-		return response($response)
-			->header('Content-type', $this->gatewayResponse->responseContentType);
-	}
-
-	/**
-	 * Get response for this request
-	 *
-	 * @return PagesContract|bool Instance of page to return or false
-     *
-     * @throws Exception
-	 */
-	protected function constructResponsePage()
-	{
-		$previousPageClass = $this->getLastPageForCurrentUserSession();
-		if (! $previousPageClass) {
-		    return false;
+        } catch (Exception $e) {
+            $page = new ExceptionPage($this->gatewayRequest);
+            $page->setMessage($e->getMessage());
         }
 
-		$previousPage = new $previousPageClass($this->gatewayRequest);
+        // Construct Response based on page to be returned
+        $response = $this->gatewayResponse->format($page);
 
-		$userResponse = $this->gatewayRequest->getUserResponseFromUSSDString();
-		$validUserResponse = $previousPage->validUserResponse($userResponse);
-		if (! $validUserResponse) {
-		    $this->throwInvalidUserResponseException();
-		}
+        return response($response)
+            ->header('Content-type', $this->gatewayResponse->responseContentType);
+    }
 
-		// Save Response before returning next screen
+    /**
+     * Get response for this request.
+     *
+     * @return PagesContract|bool Instance of page to return or false
+     *
+     * @throws Exception
+     */
+    protected function constructResponsePage()
+    {
+        $previousPageClass = $this->getLastPageForCurrentUserSession();
+        if (! $previousPageClass) {
+            return false;
+        }
+
+        $previousPage = new $previousPageClass($this->gatewayRequest);
+
+        $userResponse = $this->gatewayRequest->getUserResponseFromUSSDString();
+        $validUserResponse = $previousPage->validUserResponse($userResponse);
+        if (! $validUserResponse) {
+            $this->throwInvalidUserResponseException();
+        }
+
+        // Save Response before returning next screen
         $saved = $previousPage->save($userResponse, $this->getSessionStoreIdString());
-		if (! $saved) {
-		    $this->throwErrorWhileSavingResponseException();
-		}
+        if (! $saved) {
+            $this->throwErrorWhileSavingResponseException();
+        }
 
-		$page = $this->pagesFactoryManager->make('subsequent', $previousPage, $userResponse);
+        $page = $this->pagesFactoryManager->make('subsequent', $previousPage, $userResponse);
 
-		if (!$page) {
-			$this->throwInvalidUserResponseException();
-		}
+        if (! $page) {
+            $this->throwInvalidUserResponseException();
+        }
 
-		$this->sessionSetLastPage(get_class($page));
+        $this->sessionSetLastPage(get_class($page));
 
-		return $page;
-	}
+        return $page;
+    }
 }
