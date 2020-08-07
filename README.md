@@ -20,9 +20,9 @@ in the **_app/Http/Controllers_** folder of my Laravel application.
 <?php
 namespace App\Http\Controllers;
 
-use Dbilovd\PHUSSD\Http\Controllers\BaseController;
+use Dbilovd\PHUSSD\Http\Controllers\UssdController;
 
-class USSDApplicationController extends BaseController
+class USSDApplicationController extends UssdController
 {
   // ...
 }

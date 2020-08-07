@@ -3,6 +3,8 @@
 namespace Dbilovd\PHUSSD\GatewayProviders\General;
 
 use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
+use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderResponseContract;
 
 class Provider implements GatewayProviderContract
 {
@@ -15,12 +17,12 @@ class Provider implements GatewayProviderContract
         $this->response = new Response();
     }
 
-    public function getRequest()
+    public function getRequest(): GatewayProviderRequestContract
     {
         return $this->request;
     }
 
-    public function getResponse()
+    public function getResponse(): GatewayProviderResponseContract
     {
         return $this->response;
     }

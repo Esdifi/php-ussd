@@ -2,7 +2,9 @@
 
 namespace Dbilovd\PHUSSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\ConfigurationManagerInterface;
+
+use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
+use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
 
 class GatewayRequestProcessorFactory
 {
@@ -19,16 +21,16 @@ class GatewayRequestProcessorFactory
 	/**
 	 * Configuration manager
 	 *
-	 * @var \Dbilovd\PHUSSD\Contracts\ConfigurationManagerInterface
+	 * @var ConfigurationManagerContract
 	 */
 	protected $config;
 
     /**
      * Constructor
      *
-     * @param ConfigurationManagerInterface $config
+     * @param ConfigurationManagerContract $config
      */
-	public function __construct(ConfigurationManagerInterface $config)
+	public function __construct(ConfigurationManagerContract $config)
 	{
 		$this->config = $config;
 	}
@@ -36,7 +38,7 @@ class GatewayRequestProcessorFactory
 	/**
 	 * Make and return a Gateway Request Processort
 	 *
-	 * @return GatewayRequestProcessor
+	 * @return GatewayProviderContract
 	 */
 	public function make($httpRequest)
 	{

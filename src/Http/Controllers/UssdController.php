@@ -10,7 +10,7 @@ use Dbilovd\PHUSSD\Managers\Configurations\Laravel as LaravelConfiguration;
 use Dbilovd\PHUSSD\Services\CoreControllerService;
 use Illuminate\Http\Response;
 
-class BaseController extends Controller
+class UssdController extends Controller
 {
 	/**
 	 * Home endpoint for all USSD requests

@@ -3,6 +3,8 @@
 namespace Dbilovd\PHUSSD\Factories;
 
 use Dbilovd\PHUSSD\Contracts\ConfigurationManagerInterface;
+use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
+use Dbilovd\PHUSSD\Managers\HttpRequests\Laravel;
 
 class HttpRequestFactory
 {
@@ -18,16 +20,16 @@ class HttpRequestFactory
 	/**
 	 * Configuration manager
 	 *
-	 * @var \Dbilovd\PHUSSD\Contracts\ConfigurationManagerInterface
+	 * @var ConfigurationManagerContract
 	 */
 	protected $config;
 
-	/**
-	 * Constructor
-	 *
-	 * @return void
-	 */
-	public function __construct(ConfigurationManagerInterface $config)
+    /**
+     * Constructor
+     *
+     * @param ConfigurationManagerContract $config
+     */
+	public function __construct(ConfigurationManagerContract $config)
 	{
 		$this->config = $config;
 	}
@@ -35,12 +37,12 @@ class HttpRequestFactory
 	/**
 	 * Make and return a Gateway Request Processort
 	 *
-	 * @return \GatewayRequestProcessor 
+	 * @return mixed
 	 */
 	public function make()
 	{
-		return request();
-		
+	    return (new Laravel())->request();
+
 		// $defaultHttpRequestKey = 'laravel'; // $this->config->get("phussd.defaultServiceProvider");
 
 		// if (! array_key_exists($defaultHttpRequestKey, $this->processors)) {
