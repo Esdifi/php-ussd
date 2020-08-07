@@ -4,13 +4,13 @@ namespace Dbilovd\PHP_USSD\Managers\HttpRequests;
 
 class Laravel implements HttpRequestManagerContract
 {
-	/**
-	 * [methodName description]
-	 *
-	 * @return [type] [description]
-	 */
-	public function request()
-	{
-		return request();
-	}
+    /**
+     * [methodName description].
+     *
+     * @return [type] [description]
+     */
+    public function request()
+    {
+        return request();
+    }
 }
