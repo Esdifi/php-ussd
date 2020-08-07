@@ -1,14 +1,14 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Http\Controllers;
+namespace Dbilovd\PHP_USSD\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dbilovd\PHUSSD\Factories\GatewayRequestProcessorFactory;
-use Dbilovd\PHUSSD\Factories\HttpRequestFactory;
-use Dbilovd\PHUSSD\Factories\PagesFactory;
-use Dbilovd\PHUSSD\Factories\SessionManagerFactory;
-use Dbilovd\PHUSSD\Managers\Configurations\Laravel as LaravelConfiguration;
-use Dbilovd\PHUSSD\Services\CoreControllerService;
+use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
+use Dbilovd\PHP_USSD\Factories\HttpRequestFactory;
+use Dbilovd\PHP_USSD\Factories\PagesFactory;
+use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
+use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
+use Dbilovd\PHP_USSD\Services\CoreControllerService;
 use Illuminate\Http\Response;
 
 class UssdController extends Controller

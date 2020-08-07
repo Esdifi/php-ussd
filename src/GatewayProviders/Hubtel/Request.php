@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHUSSD\GatewayProviders\Hubtel;
+namespace Dbilovd\PHP_USSD\GatewayProviders\Hubtel;
 
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 
 class Request implements GatewayProviderRequestContract
 {

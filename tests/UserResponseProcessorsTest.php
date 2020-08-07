@@ -1,6 +1,6 @@
 <?php
 
-use Dbilovd\PHUSSD\Traits\ProcessesUserResponse;
+use Dbilovd\PHP_USSD\Traits\ProcessesUserResponse;
 use PHPUnit\Framework\TestCase;
 
 class UserResponseProcessorsTest extends TestCase

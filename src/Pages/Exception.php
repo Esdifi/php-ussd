@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Pages;
+namespace Dbilovd\PHP_USSD\Pages;
 
 class Exception extends BasePage
 {

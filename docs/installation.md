@@ -12,15 +12,15 @@ The following must be met when using this library with Laravel
 You may install this package using Composer
 
 ```
-composer require dbilovd/phussd@dev-master
+composer require dbilovd/php-ussd@dev-master
 ```
 
-The `Dbilovd\PHUSSD\LaravelServiceProvider` will be discovered and registers automatically.
+The `Dbilovd\PHP_USSD\LaravelServiceProvider` will be discovered and registers automatically.
 
 ### Configuration
 
 First, you want to publish the configurations files. You can do that using the following commands
 ```
-php artisan vendor:publish --provider="Dbilovd\PHUSSD\LaravelServiceProvider"
+php artisan vendor:publish --provider="Dbilovd\PHP_USSD\LaravelServiceProvider"
 ``` 
-This will create a new configuration file named `config/phussd.php`
+This will create a new configuration file named `config/php-ussd.php`

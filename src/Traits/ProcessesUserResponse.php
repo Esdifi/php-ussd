@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Traits;
+namespace Dbilovd\PHP_USSD\Traits;
 
 trait ProcessesUserResponse
 {

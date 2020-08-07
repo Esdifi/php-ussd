@@ -1,16 +1,16 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Factories;
+namespace Dbilovd\PHP_USSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHUSSD\SessionManagers\RedisSessionManager;
+use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
+use Dbilovd\PHP_USSD\SessionManagers\RedisSessionManager;
 
 class SessionManagerFactory
 {
 	/**
 	 * Make a new instace of a Session Manager
 	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\SessionManagersInterface
+	 * @return \Dbilovd\PHP_USSD\Contracts\SessionManagersInterface
 	 */
 	public function make() : SessionManagersInterface
 	{

@@ -1,17 +1,17 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Services;
+namespace Dbilovd\PHP_USSD\Services;
 
-use Dbilovd\PHUSSD\Contracts\PagesContract;
-use Dbilovd\PHUSSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHUSSD\Factories\PagesFactory;
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderResponseContract;
-use Dbilovd\PHUSSD\Pages\Exception as ExceptionPage;
-use Dbilovd\PHUSSD\Traits\InteractsWithSession;
-use Dbilovd\PHUSSD\Traits\ProcessesUserResponse;
-use Dbilovd\PHUSSD\Traits\ThrowsExceptions;
+use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
+use Dbilovd\PHP_USSD\Factories\PagesFactory;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
+use Dbilovd\PHP_USSD\Pages\Exception as ExceptionPage;
+use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
+use Dbilovd\PHP_USSD\Traits\ProcessesUserResponse;
+use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
 use Exception;
 
 class CoreControllerService
@@ -32,7 +32,7 @@ class CoreControllerService
 	 * 
 	 * @var String
 	 */
-	public $initialPageClassName = \Dbilovd\PHUSSD\Pages\Home::class;
+	public $initialPageClassName = \Dbilovd\PHP_USSD\Pages\Home::class;
 
     /**
      * Gateway Request object

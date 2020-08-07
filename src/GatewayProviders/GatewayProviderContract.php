@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Dbilovd\PHUSSD\GatewayProviders;
+namespace Dbilovd\PHP_USSD\GatewayProviders;
 
 
 /**
  * Interface GatewayProviderContract
- * @package Dbilovd\PHUSSD\GatewayProviders
+ * @package Dbilovd\PHP_USSD\GatewayProviders
  */
 interface GatewayProviderContract
 {

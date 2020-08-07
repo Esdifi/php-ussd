@@ -1,10 +1,10 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Factories;
+namespace Dbilovd\PHP_USSD\Factories;
 
 
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
 
 class GatewayRequestProcessorFactory
 {
@@ -14,8 +14,8 @@ class GatewayRequestProcessorFactory
 	 * @var array
 	 */
 	protected $processors = [
-        'general'	=> \Dbilovd\PHUSSD\GatewayProviders\General\Provider::class,
-        'hubtel'	=> \Dbilovd\PHUSSD\GatewayProviders\Hubtel\Provider::class,
+        'general'	=> \Dbilovd\PHP_USSD\GatewayProviders\General\Provider::class,
+        'hubtel'	=> \Dbilovd\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
 	];
 
 	/**
@@ -42,7 +42,7 @@ class GatewayRequestProcessorFactory
 	 */
 	public function make($httpRequest)
 	{
-		$gatewayProviderKey = $this->config->get("phussd.defaultServiceProvider");
+		$gatewayProviderKey = $this->config->get("php-ussd.defaultServiceProvider");
 
 		if (!$gatewayProviderKey || !array_key_exists($gatewayProviderKey, $this->processors)) {
 			$gatewayProviderKey = 'general';

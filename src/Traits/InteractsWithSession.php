@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Traits;
+namespace Dbilovd\PHP_USSD\Traits;
 
-use Dbilovd\PHUSSD\Traits\ThrowsExceptions;
+use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
 
 trait InteractsWithSession
 {

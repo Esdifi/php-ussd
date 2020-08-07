@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Helpers;
+namespace Dbilovd\PHP_USSD\Helpers;
 
 class HttpRequest
 {

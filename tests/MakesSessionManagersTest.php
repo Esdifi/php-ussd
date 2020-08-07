@@ -1,7 +1,7 @@
 <?php
 
-use Dbilovd\PHUSSD\Contracts\SessionManagersContract;
-use Dbilovd\PHUSSD\Traits\MakesSessionManagers;
+use Dbilovd\PHP_USSD\Contracts\SessionManagersContract;
+use Dbilovd\PHP_USSD\Traits\MakesSessionManagers;
 use PHPUnit\Framework\TestCase;
 
 class MakesSessionManagersTest extends TestCase

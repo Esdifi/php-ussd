@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Pages;
+namespace Dbilovd\PHP_USSD\Pages;
 
-use Dbilovd\PHUSSD\Contracts\PagesContract;
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 use Illuminate\Support\Facades\Redis;
 
 abstract class BasePage implements PagesContract
@@ -11,7 +11,7 @@ abstract class BasePage implements PagesContract
 	/**
 	 * Request object
 	 * 
-	 * @var \Dbilovd\PHUSSD\Requests
+	 * @var \Dbilovd\PHP_USSD\Requests
 	 */
 	public $request;
 
@@ -87,7 +87,7 @@ abstract class BasePage implements PagesContract
 	 * Return an instance of the next child class depending on the user input
 	 *
 	 * @param String $userResponse 
-	 * @return \Dbilovd\PHUSSD\Contracts\PagesContract
+	 * @return \Dbilovd\PHP_USSD\Contracts\PagesContract
 	 */
 	public function next ($userResponse)
 	{

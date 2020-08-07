@@ -7,7 +7,7 @@ Make sure you have completed the installation of the package.
 
 ### Controller
 The first thing to do is to setup the Controller that will handle all requests to our USSD application.
-The new controller will extend `\Dbilovd\PHUSSD\Http\Controllers\UssdController`.
+The new controller will extend `\Dbilovd\PHP_USSD\Http\Controllers\UssdController`.
 
 NB: You can place the controller anywhere you want to. For this guide we will be placing it in the default controllers' 
 folder **_app/Http/Controllers_** of a Laravel application.
@@ -16,7 +16,7 @@ folder **_app/Http/Controllers_** of a Laravel application.
 <?php
 namespace App\Http\Controllers;
 
-use Dbilovd\PHUSSD\Http\Controllers\UssdController;
+use Dbilovd\PHP_USSD\Http\Controllers\UssdController;
 
 class USSDApplicationController extends UssdController
 {
@@ -24,7 +24,7 @@ class USSDApplicationController extends UssdController
 }
 ```
 
-The controller class extended `Dbilovd\PHUSSD\Http\Controllers\BaseController` has a method called `home`. This method 
+The controller class extended `Dbilovd\PHP_USSD\Http\Controllers\BaseController` has a method called `home`. This method 
 will handle all USSD requests.
 
 ### Routes

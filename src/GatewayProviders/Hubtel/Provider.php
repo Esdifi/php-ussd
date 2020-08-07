@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHUSSD\GatewayProviders\Hubtel;
+namespace Dbilovd\PHP_USSD\GatewayProviders\Hubtel;
 
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderContract;
-use \Dbilovd\PHUSSD\GatewayProviders\General\Provider as GeneralProvider;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use \Dbilovd\PHP_USSD\GatewayProviders\General\Provider as GeneralProvider;
 
 class Provider extends GeneralProvider
 {

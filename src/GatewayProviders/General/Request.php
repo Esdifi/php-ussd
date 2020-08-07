@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHUSSD\GatewayProviders\General;
+namespace Dbilovd\PHP_USSD\GatewayProviders\General;
 
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHUSSD\GatewayProviders\General\Response as GeneralProviderResponse;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\GatewayProviders\General\Response as GeneralProviderResponse;
 
 class Request implements GatewayProviderRequestContract
 {

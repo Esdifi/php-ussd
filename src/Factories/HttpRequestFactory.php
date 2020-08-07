@@ -1,10 +1,10 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Factories;
+namespace Dbilovd\PHP_USSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\ConfigurationManagerInterface;
-use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
-use Dbilovd\PHUSSD\Managers\HttpRequests\Laravel;
+use Dbilovd\PHP_USSD\Contracts\ConfigurationManagerInterface;
+use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Dbilovd\PHP_USSD\Managers\HttpRequests\Laravel;
 
 class HttpRequestFactory
 {
@@ -43,7 +43,7 @@ class HttpRequestFactory
 	{
 	    return (new Laravel())->request();
 
-		// $defaultHttpRequestKey = 'laravel'; // $this->config->get("phussd.defaultServiceProvider");
+		// $defaultHttpRequestKey = 'laravel'; // $this->config->get("php-ussd.defaultServiceProvider");
 
 		// if (! array_key_exists($defaultHttpRequestKey, $this->processors)) {
 		// 	$defaultHttpRequestKey = 'laravel';

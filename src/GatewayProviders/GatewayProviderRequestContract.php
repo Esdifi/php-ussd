@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Dbilovd\PHUSSD\GatewayProviders;
+namespace Dbilovd\PHP_USSD\GatewayProviders;
 
 
 interface GatewayProviderRequestContract

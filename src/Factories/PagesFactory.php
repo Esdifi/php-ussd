@@ -1,11 +1,11 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Factories;
+namespace Dbilovd\PHP_USSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\PagesContract;
-use Dbilovd\PHUSSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHUSSD\Managers\Configurations\ConfigurationManagerContract;
-use Dbilovd\PHUSSD\Traits\InteractsWithSession;
+use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
 
 class PagesFactory
 {
@@ -102,10 +102,10 @@ class PagesFactory
      */
     protected function getInitialPageClass(): String
     {
-		$initialPage = $this->config->get("phussd.initialPageClass");
+		$initialPage = $this->config->get("php-ussd.initialPageClass");
 
 		if (! $initialPage) {
-		    $initialPage = \Dbilovd\PHUSSD\Pages\Home::class;
+		    $initialPage = \Dbilovd\PHP_USSD\Pages\Home::class;
         }
 
 		return $initialPage;

@@ -8,14 +8,14 @@ You can create a Page anywhere in your application. We will be using the folder 
 classes.
 
 For our initial page, let us call it InitialPage. I will create it in the folder `app/USSD/Pages/InitialPage.php` this
-class should extend the `\Dbilovd\PHUSSD\Pages\BasePage`
+class should extend the `\Dbilovd\PHP_USSD\Pages\BasePage`
 
 ```
 <?php
 
 namespace App\USSD\Pages;
 
-use Dbilovd\PHUSSD\Pages\BasePage;
+use Dbilovd\PHP_USSD\Pages\BasePage;
 
 class InitialPage extends BasePage
 {
@@ -39,7 +39,7 @@ class InitialPage extends BasePage
 
 Next we can configure the application to use our new class as our initial page.
 
-For that we need to update our `config/phussd.php` file.
+For that we need to update our `config/php-ussd.php` file.
 
 We will update the `initialPageClass` key with the class name of our initial page class
 

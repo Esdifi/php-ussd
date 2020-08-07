@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Traits;
+namespace Dbilovd\PHP_USSD\Traits;
 
-use Dbilovd\PHUSSD\Exceptions\InvalidOptionSelectedException;
-use Dbilovd\PHUSSD\Exceptions\InvalidPageForNewSessionException;
+use Dbilovd\PHP_USSD\Exceptions\InvalidOptionSelectedException;
+use Dbilovd\PHP_USSD\Exceptions\InvalidPageForNewSessionException;
 
 trait ThrowsExceptions
 {

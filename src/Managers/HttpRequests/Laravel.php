@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Managers\HttpRequests;
+namespace Dbilovd\PHP_USSD\Managers\HttpRequests;
 
 class Laravel implements HttpRequestManagerContract
 {

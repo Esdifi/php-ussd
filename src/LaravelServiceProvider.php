@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD;
+namespace Dbilovd\PHP_USSD;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class LaravelServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__ . '/config/laravel.php'	=> config_path('phussd.php'),
+			__DIR__ . '/config/laravel.php'	=> config_path('php-ussd.php'),
 		], 'config');
 	}
 
@@ -26,7 +26,7 @@ class LaravelServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->mergeConfigFrom(
-			__DIR__ . '/config/laravel.php', 'phussd.php'
+			__DIR__ . '/config/laravel.php', 'php-ussd.php'
 		);
 	}
 }

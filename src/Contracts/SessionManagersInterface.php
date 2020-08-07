@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Contracts;
+namespace Dbilovd\PHP_USSD\Contracts;
 
 interface SessionManagersInterface
 {

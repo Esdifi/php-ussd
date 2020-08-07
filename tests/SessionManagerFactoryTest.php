@@ -1,7 +1,7 @@
 <?php
 
-use Dbilovd\PHUSSD\Contracts\SessionManagersContract;
-use Dbilovd\PHUSSD\Factories\SessionManagerFactory;
+use Dbilovd\PHP_USSD\Contracts\SessionManagersContract;
+use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
 use PHPUnit\Framework\TestCase;
 
 class SessionManagerFactoryTest extends TestCase
