@@ -15,7 +15,7 @@ class LaravelServiceProvider extends ServiceProvider
 	{
 		$this->publishes([
 			__DIR__ . '/config/laravel.php'	=> config_path('phussd.php'),
-		]);
+		], 'config');
 	}
 
 	/**
