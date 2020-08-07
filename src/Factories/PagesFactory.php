@@ -36,7 +36,7 @@ class PagesFactory
 	/**
 	 * Make and return a USSD Page
 	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages A class that implements the Pages contract
+	 * @return Pages A class that implements the Pages contract
 	 */
 	public function make($type, Pages $previousPage = null, $userResponse = null) : Pages
 	{
@@ -55,7 +55,7 @@ class PagesFactory
 	/**
 	 * Instantiate and return the initial page
 	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
+	 * @return Pages
 	 */
 	protected function initialPage () : Pages
 	{

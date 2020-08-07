@@ -2,7 +2,7 @@
 
 namespace Dbilovd\PHUSSD\Contracts;
 
-interface SessionManagersContract
+interface SessionManagersInterface
 {
 	/**
 	 * Redis: Check if key exists

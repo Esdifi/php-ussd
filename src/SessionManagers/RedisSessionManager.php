@@ -2,10 +2,10 @@
 
 namespace Dbilovd\PHUSSD\SessionManagers;
 
-use Dbilovd\PHUSSD\Contracts\SessionManagersContract;
+use Dbilovd\PHUSSD\Contracts\SessionManagersInterface;
 use Illuminate\Support\Facades\Redis;
 
-class RedisSessionManager implements SessionManagersContract
+class RedisSessionManager implements SessionManagersInterface
 {
 	/**
 	 * Redis: Check if key exists

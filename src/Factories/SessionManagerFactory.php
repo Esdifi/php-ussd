@@ -2,7 +2,7 @@
 
 namespace Dbilovd\PHUSSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\SessionManagersContract;
+use Dbilovd\PHUSSD\Contracts\SessionManagersInterface;
 use Dbilovd\PHUSSD\SessionManagers\RedisSessionManager;
 
 class SessionManagerFactory
@@ -10,9 +10,9 @@ class SessionManagerFactory
 	/**
 	 * Make a new instace of a Session Manager
 	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\SessionManagersContract
+	 * @return \Dbilovd\PHUSSD\Contracts\SessionManagersInterface
 	 */
-	public function make() : SessionManagersContract
+	public function make() : SessionManagersInterface
 	{
 		return new RedisSessionManager();
 	}

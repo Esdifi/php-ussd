@@ -11,6 +11,8 @@ class Exception extends BasePage
 	 */
 	public $message;
 
+	public $responseType = 'end';
+
 	/**
 	 * 
 	 */
@@ -34,9 +36,9 @@ class Exception extends BasePage
 	 * 
 	 * @return Mixed
 	 */
-	public function responseType ()
+	public function getResponseType()
 	{
-		return $this->request->getResponseType('end');
+		return 'end';
 	}
 }
 

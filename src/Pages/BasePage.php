@@ -14,6 +14,8 @@ abstract class BasePage implements Pages
 	 */
 	public $request;
 
+	public $responseType = 'continue';
+
 	/**
 	 * Message string to return
 	 * 
@@ -120,9 +122,7 @@ abstract class BasePage implements Pages
 	 */
 	public function responseType ()
 	{
-		return $this->request->getResponseType(
-			$this->responseType ?: 'end'
-		);
+		return $this->responseType ?: 'end';
 	}
 	
 	/**

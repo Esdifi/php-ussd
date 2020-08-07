@@ -4,7 +4,7 @@ namespace Dbilovd\PHUSSD\Helpers;
 
 use Illuminate\Support\Facades\Config;
 
-class Configuarations
+class Configurations
 {
 	/**
 	 * Read and return the value of a config using key provided

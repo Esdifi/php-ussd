@@ -1,8 +1,10 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Contracts;
 
-interface Requests
+namespace Dbilovd\PHUSSD\GatewayProviders;
+
+
+interface GatewayProviderRequestContract
 {
 	/**
 	 * Fetch session ID for current request
@@ -38,4 +40,12 @@ interface Requests
 	 * @return Boolean Request received is a timeout request or not
 	 */
 	public function isTimeoutRequest ();
+
+	/**
+	 * Fetch and return User response from USSD string
+	 *
+	 * @return string User Response string
+	 */
+	public function getUserResponseFromUSSDString();
+
 }

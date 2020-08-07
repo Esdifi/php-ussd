@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'defaultServiceProvider'	=> 'general'
+	'defaultServiceProvider'	=> env('DEFAULT_USSD_PROVIDER', 'general')
 ];
