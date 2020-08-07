@@ -13,25 +13,25 @@ use Illuminate\Http\Response;
 
 class UssdController extends Controller
 {
-	/**
-	 * Home endpoint for all USSD requests
-	 *
-	 * @return Response
-	 */
-	public function home()
-	{
-		$config = new LaravelConfiguration();
+    /**
+     * Home endpoint for all USSD requests.
+     *
+     * @return Response
+     */
+    public function home()
+    {
+        $config = new LaravelConfiguration();
 
         $httpRequest = (new HttpRequestFactory($config))->make();
 
         $sessionManager = (new SessionManagerFactory())->make();
 
-		$gatewayProvider = (new GatewayRequestProcessorFactory($config))
-			->make($httpRequest);
+        $gatewayProvider = (new GatewayRequestProcessorFactory($config))
+            ->make($httpRequest);
 
-		$pagesFactory = (new PagesFactory($gatewayProvider->getRequest(), $config));
+        $pagesFactory = (new PagesFactory($gatewayProvider->getRequest(), $config));
 
-		return (new CoreControllerService($gatewayProvider, $sessionManager, $pagesFactory))
+        return (new CoreControllerService($gatewayProvider, $sessionManager, $pagesFactory))
             ->handle();
-	}
+    }
 }
