@@ -1,25 +1,33 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Pages;
+namespace Dbilovd\PHP_USSD\Pages;
 
-use Dbilovd\PHUSSD\Contracts\Pages;
+use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 use Illuminate\Support\Facades\Redis;
 
-abstract class BasePage implements Pages
+abstract class BasePage implements PagesContract
 {
 	/**
 	 * Request object
 	 * 
-	 * @var \Dbilovd\PHUSSD\Requests
+	 * @var \Dbilovd\PHP_USSD\Requests
 	 */
 	public $request;
+
+    /**
+     * Default response type
+     *
+     * @var string
+     */
+	public $responseType = 'continue';
 
 	/**
 	 * Message string to return
 	 * 
 	 * @var String
 	 */
-	public $message = "Default Message";
+	public $message = "Hello there, \r\nthis is a USSD page.";
 
 	/**
 	 * Next page class name
@@ -29,13 +37,22 @@ abstract class BasePage implements Pages
 	public $nextPage = false;
 
 	/**
-	 * Constructor
+	 * Previous page's user response
 	 *
-	 * @return void
+	 * @var mixed
 	 */
-	public function __construct($request)
+	public $previousPagesUserResponse = false;
+
+    /**
+     * Constructor
+     *
+     * @param $request
+     * @param null $previousPagesUserResponse
+     */
+	public function __construct(GatewayProviderRequestContract $request, $previousPagesUserResponse = null)
 	{
 		$this->request = $request;
+		$this->previousPagesUserResponse = $previousPagesUserResponse;
 	}
 
 	/**
@@ -51,10 +68,14 @@ abstract class BasePage implements Pages
 	/**
 	 * Check if User Response is valid
 	 * 	
-	 * @return Boolean Response content
+	 * @return bool Response content
 	 */
 	public function validUserResponse ($userResponse)
 	{
+	    if (! $userResponse) {
+	        return false;
+        }
+
 		if (property_exists($this, 'menus') && is_array($this->menus)) {
 			return array_key_exists($userResponse, $this->menus);
 		}
@@ -66,7 +87,7 @@ abstract class BasePage implements Pages
 	 * Return an instance of the next child class depending on the user input
 	 *
 	 * @param String $userResponse 
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
+	 * @return \Dbilovd\PHP_USSD\Contracts\PagesContract
 	 */
 	public function next ($userResponse)
 	{
@@ -120,9 +141,7 @@ abstract class BasePage implements Pages
 	 */
 	public function responseType ()
 	{
-		return $this->request->getResponseType(
-			$this->responseType ?: 'end'
-		);
+		return $this->responseType ?: 'end';
 	}
 	
 	/**

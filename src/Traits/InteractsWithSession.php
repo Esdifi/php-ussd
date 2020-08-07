@@ -1,13 +1,11 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Traits;
+namespace Dbilovd\PHP_USSD\Traits;
 
-use Dbilovd\PHUSSD\Traits\ThrowsExceptions;
+use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
 
 trait InteractsWithSession
 {
-	use ThrowsExceptions;
-	
 	/**
 	 * Construct and return session id used in store
 	 * 
@@ -15,7 +13,7 @@ trait InteractsWithSession
 	 */
 	protected function getSessionStoreIdString () : string
 	{
-		return "ussd_session_{$this->request->getSessionId()}";
+		return "ussd_session_{$this->gatewayRequest->getSessionId()}";
 	}
 
 	/**
@@ -28,8 +26,8 @@ trait InteractsWithSession
 		$sessionStoreId = $this->getSessionStoreIdString();
 		if (! $this->sessionManager->exists($sessionStoreId)) {
 			$this->sessionManager->setValueOfSubKey($sessionStoreId, "initialised", time());
-			$this->sessionManager->setValueOfSubKey($sessionStoreId, "phone", $this->request->getMSISDN());
-			$this->sessionManager->setValueOfSubKey($sessionStoreId, "network", $this->request->getNetwork());
+			$this->sessionManager->setValueOfSubKey($sessionStoreId, "phone", $this->gatewayRequest->getMSISDN());
+			$this->sessionManager->setValueOfSubKey($sessionStoreId, "network", $this->gatewayRequest->getNetwork());
 		}
 	}
 

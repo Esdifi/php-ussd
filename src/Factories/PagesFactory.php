@@ -1,10 +1,11 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Factories;
+namespace Dbilovd\PHP_USSD\Factories;
 
-use Dbilovd\PHUSSD\Contracts\Pages;
-use Dbilovd\PHUSSD\Pages\Home;
-use Dbilovd\PHUSSD\Traits\InteractsWithSession;
+use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
 
 class PagesFactory
 {
@@ -18,27 +19,40 @@ class PagesFactory
 	protected $request;
 
 	/**
-	 * Class name of page
+	 * Config
 	 * 
+	 * @var
+	 */
+	protected $config;
+
+	/**
+	 * Class name of page
+	 *
 	 * @var String
 	 */
 	protected $initialPageClass;
 
-	/**
-	 * Constructor
-	 *
-	 */
-	public function __construct($request)
+    /**
+     * Constructor
+     *
+     * @param $request
+     * @param ConfigurationManagerContract $config
+     */
+	public function __construct(GatewayProviderRequestContract $request, ConfigurationManagerContract $config)
 	{
 		$this->request = $request;
+		$this->config = $config;
 	}
 
-	/**
-	 * Make and return a USSD Page
-	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages A class that implements the Pages contract
-	 */
-	public function make($type, Pages $previousPage = null, $userResponse = null) : Pages
+    /**
+     * Make and return a USSD Page
+     *
+     * @param $type
+     * @param PagesContract|null $previousPage
+     * @param null $userResponse
+     * @return PagesContract A class that implements the Pages contract
+     */
+	public function make($type, PagesContract $previousPage = null, $userResponse = null) : PagesContract
 	{
 		switch ($type) {
 			case 'subsequent':
@@ -55,19 +69,22 @@ class PagesFactory
 	/**
 	 * Instantiate and return the initial page
 	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
+	 * @return PagesContract
 	 */
-	protected function initialPage () : Pages
+	protected function initialPage(): PagesContract
 	{
-		return new $this->initialPageClass($this->request);
+	    $initialPageClassName = $this->getInitialPageClass();
+		return (new $initialPageClassName($this->request));
 	}
 
-	/**
-	 * Handle requests that are not the initial, cancellation or timeout requests
-	 *
-	 * @return String Response string
-	 */
-	protected function subsequentPages(Pages $previousPage, $userResponse)
+    /**
+     * Handle requests that are not the initial, cancellation or timeout requests
+     *
+     * @param PagesContract $previousPage
+     * @param $userResponse
+     * @return PagesContract Response string
+     */
+	protected function subsequentPages(PagesContract $previousPage, $userResponse): PagesContract
 	{
 		$nextPageClassName = $previousPage->next($userResponse);
 		
@@ -75,17 +92,22 @@ class PagesFactory
 			$this->throwInvalidUserResponseException();
 		}
 
-		return new $nextPageClassName($this->request);
+		return (new $nextPageClassName($this->request, $userResponse));
 	}
 
-	/**
-	 * Set the class name of the initial page
-	 *
-	 * @param String $className
-	 * @return void
-	 */
-	public function setInitialPageClass(String $className) : void
-	{
-		$this->initialPageClass = $className;
-	}
+    /**
+     *
+     *
+     * @return String
+     */
+    protected function getInitialPageClass(): String
+    {
+		$initialPage = $this->config->get("php-ussd.initialPageClass");
+
+		if (! $initialPage) {
+		    $initialPage = \Dbilovd\PHP_USSD\Pages\Home::class;
+        }
+
+		return $initialPage;
+    }
 }

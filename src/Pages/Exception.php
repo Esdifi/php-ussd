@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHUSSD\Pages;
+namespace Dbilovd\PHP_USSD\Pages;
 
 class Exception extends BasePage
 {
@@ -10,6 +10,8 @@ class Exception extends BasePage
 	 * @var String
 	 */
 	public $message;
+
+	public $responseType = 'end';
 
 	/**
 	 * 
@@ -34,9 +36,9 @@ class Exception extends BasePage
 	 * 
 	 * @return Mixed
 	 */
-	public function responseType ()
+	public function getResponseType()
 	{
-		return $this->request->getResponseType('end');
+		return 'end';
 	}
 }
 

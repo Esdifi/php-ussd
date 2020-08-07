@@ -1,6 +1,6 @@
 {
-    "name": "dbilovd/phussd",
-    "description": "PHP USSD",
+    "name": "dbilovd/php-ussd",
+    "description": "A simple and customisable USSD library for PHP",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,16 +9,24 @@
             "email": "dbilovd@gmail.com"
         }
     ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
     "autoload": {
         "psr-4": {
-            "Dbilovd\\PHUSSD\\": "src/"
+            "Dbilovd\\PHP_USSD\\": "src/"
         }
     },
-    "require": {},
+    "autoload-dev": {
+        "psr-4": {
+            "Dbilovd\\PHP_USSD\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Dbilovd\\PHUSSD\\LaravelServiceProvider"
+                "Dbilovd\\PHP_USSD\\LaravelServiceProvider"
             ]
         }
     }
