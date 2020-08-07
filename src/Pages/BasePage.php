@@ -31,13 +31,22 @@ abstract class BasePage implements Pages
 	public $nextPage = false;
 
 	/**
-	 * Constructor
+	 * Previous page's user response
 	 *
-	 * @return void
+	 * @var mixed
 	 */
-	public function __construct($request)
+	public $previousPagesUserResponse = false;
+
+    /**
+     * Constructor
+     *
+     * @param $request
+     * @param null $previousPagesUserResponse
+     */
+	public function __construct($request, $previousPagesUserResponse = null)
 	{
 		$this->request = $request;
+		$this->previousPagesUserResponse = $previousPagesUserResponse;
 	}
 
 	/**
@@ -53,10 +62,14 @@ abstract class BasePage implements Pages
 	/**
 	 * Check if User Response is valid
 	 * 	
-	 * @return Boolean Response content
+	 * @return bool Response content
 	 */
 	public function validUserResponse ($userResponse)
 	{
+	    if (! $userResponse) {
+	        return false;
+        }
+
 		if (property_exists($this, 'menus') && is_array($this->menus)) {
 			return array_key_exists($userResponse, $this->menus);
 		}

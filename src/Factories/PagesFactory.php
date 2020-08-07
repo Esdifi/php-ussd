@@ -33,11 +33,14 @@ class PagesFactory
 		$this->request = $request;
 	}
 
-	/**
-	 * Make and return a USSD Page
-	 *
-	 * @return Pages A class that implements the Pages contract
-	 */
+    /**
+     * Make and return a USSD Page
+     *
+     * @param $type
+     * @param Pages|null $previousPage
+     * @param null $userResponse
+     * @return Pages A class that implements the Pages contract
+     */
 	public function make($type, Pages $previousPage = null, $userResponse = null) : Pages
 	{
 		switch ($type) {
@@ -57,17 +60,20 @@ class PagesFactory
 	 *
 	 * @return Pages
 	 */
-	protected function initialPage () : Pages
+	protected function initialPage(): Pages
 	{
-		return new $this->initialPageClass($this->request);
+	    $initialPageClassName = $this->getInitialPageClass();
+		return (new $initialPageClassName($this->request));
 	}
 
-	/**
-	 * Handle requests that are not the initial, cancellation or timeout requests
-	 *
-	 * @return String Response string
-	 */
-	protected function subsequentPages(Pages $previousPage, $userResponse)
+    /**
+     * Handle requests that are not the initial, cancellation or timeout requests
+     *
+     * @param Pages $previousPage
+     * @param $userResponse
+     * @return Pages Response string
+     */
+	protected function subsequentPages(Pages $previousPage, $userResponse): Pages
 	{
 		$nextPageClassName = $previousPage->next($userResponse);
 		
@@ -75,7 +81,7 @@ class PagesFactory
 			$this->throwInvalidUserResponseException();
 		}
 
-		return new $nextPageClassName($this->request);
+		return (new $nextPageClassName($this->request, $userResponse));
 	}
 
 	/**
@@ -88,4 +94,14 @@ class PagesFactory
 	{
 		$this->initialPageClass = $className;
 	}
+
+    /**
+     *
+     *
+     * @return String
+     */
+    public function getInitialPageClass(): String
+    {
+        return $this->initialPageClass;
+    }
 }

@@ -95,12 +95,16 @@ class CoreControllerService
                 $pageFactory = (new PagesFactory($this->gatewayRequest));
                 $pageFactory->setInitialPageClass($this->initialPageClassName);
                 $page = $pageFactory->make('initial');
+		        $this->sessionSetLastPage(get_class($page));
             }
 
             $this->initialiseSession();
 
             $page = $page ?: $this->constructResponsePage();
 
+            if (! $page) {
+                throw new Exception("Error: Could not construct new page.");
+            }
 		} catch (Exception $e) {
 			$page = new ExceptionPage($this->gatewayRequest);
 			$page->setMessage($e->getMessage());
@@ -116,34 +120,33 @@ class CoreControllerService
 	/**
 	 * Get response for this request
 	 *
-	 * @return Pages Instance of page to return
+	 * @return Pages|bool Instance of page to return or false
      *
      * @throws Exception
 	 */
 	protected function constructResponsePage()
 	{
-		$page = false;
+		$previousPageClass = $this->getLastPageForCurrentUserSession();
+		if (! $previousPageClass) {
+		    return false;
+        }
 
-		$lastPageClass = $this->getLastPageForCurrentUserSession();
-		$lastPage = null;
-		if ($lastPageClass) {
-		    $lastPage = new $lastPageClass($this->gatewayRequest);
+		$previousPage = new $previousPageClass($this->gatewayRequest);
+
+		$userResponse = $this->gatewayRequest->getUserResponseFromUSSDString();
+		$validUserResponse = $previousPage->validUserResponse($userResponse);
+		if (! $validUserResponse) {
+		    $this->throwInvalidUserResponseException();
 		}
 
-		$userResponse = $this->gatewayRequest->getUserResponse();
-		$validUserResponse = $lastPage->validUserResponse($userResponse);
-		if (! $validUserResponse) {
-				$this->throwInvalidUserResponseException();
-			}
-
 		// Save Response before returning next screen
-        $saved = $lastPage->save($userResponse, $this->getSessionStoreIdString());
+        $saved = $previousPage->save($userResponse, $this->getSessionStoreIdString());
 		if (! $saved) {
 		    $this->throwErrorWhileSavingResponseException();
 		}
 
 		$page = (new PagesFactory($this->gatewayRequest))
-            ->make('subsequent', $lastPage, $userResponse);
+            ->make('subsequent', $previousPage, $userResponse);
 
 		if (!$page) {
 			$this->throwInvalidUserResponseException();

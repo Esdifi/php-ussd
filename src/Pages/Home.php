@@ -43,18 +43,20 @@ class Home extends BasePage
 		return "Welcome to PHP USSD (PhUSSD) \r\n\r\n{$menus}";
 	}
 
-	/**
-	 * Return an instance of the next child class depending on the user input
-	 *
-	 * @return \Dbilovd\PHUSSD\Contracts\Pages
-	 */
+    /**
+     * Return an instance of the next Page class to be sent to the user based on the user's last input
+     *
+     * @param string $selectedOption
+     * @return bool|string
+     */
 	public function next($selectedOption)
 	{
 		$className = false;
+
 		switch ($selectedOption) {
 			case '1':
 			case '2':
-				$className = SearchForAnOwner::class;
+				$className = HomeResponsePage::class;
 				break;
 		}
 		
