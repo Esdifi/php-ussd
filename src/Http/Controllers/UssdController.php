@@ -2,7 +2,7 @@
 
 namespace Dbilovd\PHP_USSD\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
 use Dbilovd\PHP_USSD\Factories\HttpRequestFactory;
 use Dbilovd\PHP_USSD\Factories\PagesFactory;
