@@ -9,7 +9,9 @@
             "email": "dbilovd@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/routing": "^7.24"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
