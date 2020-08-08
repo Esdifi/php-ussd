@@ -1,16 +1,17 @@
 # Your First USSD App
+This document aims to guide you in building a minimal USSD application using this package.
 
 ## Installation
-Make sure you have completed the installation of the package.
+Before we proceed, ensure you have completed the [installation](./installation.md) of the package.
 
 ## Setup
 
 ### Controller
-The first thing to do is to setup the Controller that will handle all requests to our USSD application.
-The new controller will extend `\Dbilovd\PHP_USSD\Http\Controllers\UssdController`.
+The first thing to do is to set up the Controller that will handle all requests to our USSD application.
+This controller should extend `\Dbilovd\PHP_USSD\Http\Controllers\UssdController`.
 
-NB: You can place the controller anywhere you want to. For this guide we will be placing it in the default controllers' 
-folder **_app/Http/Controllers_** of a Laravel application.
+NB: You can place the controller anywhere in your application. For this guide, we will be placing it in Laravel's default controllers' 
+folder: **_app/Http/Controllers_**.
 
 ```
 <?php
@@ -24,13 +25,12 @@ class USSDApplicationController extends UssdController
 }
 ```
 
-The controller class extended `Dbilovd\PHP_USSD\Http\Controllers\BaseController` has a method called `home`. This method 
-will handle all USSD requests.
+The class `Dbilovd\PHP_USSD\Http\Controllers\BaseController` contains a method called `home`. We will be pointing our route to this method.
 
 ### Routes
-To be able to receive requests we need to open an endpoint that will handle our requests. For that we will setup a 
-route that points to the `home` method of our new controller `USSDApplicationController`. We will be updating the
- `routes/web.php` file.
+After setting up our controller, we need to open an endpoint that will handle our requests. Add the following code to your `routes/web.php` file.
+
+Note: You can use your `routes/api.php` file instead if you so wish.
 
 ```
 <?php
@@ -41,15 +41,18 @@ Route::get('/ussd-app', 'USSDApplicationController@home');
 // ...
 ```
 
-NB: you can use a `POST` method or both `POST` and `GET` methods using any of the following:
-* `Route::post('/ussd-app', 'USSDApplicationController@home');`
-* `Route::match([ 'GET', 'POST' ], '/ussd-app', 'USSDApplicationController@home');` 
+NB: You can use a `POST` method or both `POST` and `GET` methods using any of the following:
+* POST: `Route::post('/ussd-app', 'USSDApplicationController@home');`
+* POST & GET: `Route::match([ 'GET', 'POST' ], '/ussd-app', 'USSDApplicationController@home');` 
+
+Hurray, you have built your very first USSD application. Now, let's use it.
 
 ## Results
-That all, you are now ready to begin building your USSD application.
+You will need a simulator to use your application, but for this guide, we will be using our browser as a pseudo-simulator.
+
 Start your Laravel server using `php artisan serve` and visit `http://127.0.0.1:8000/ussd-app` in a browser.
 
-You should see the first screen 
+You should see the following message.
 ```
 CON Welcome to PHP USSD (PhUSSD).
 
@@ -57,18 +60,16 @@ CON Welcome to PHP USSD (PhUSSD).
 2. Cancel
 ```
 
-You are seeing this message because by default we are using a General plain-text based gateway provider.
-A break down of the message:  
-1. CON: This tells the user's phone that we are expecting a response and so an input field will be provided for the user
-2. Message: "Welcome to PHP USSD (PhUSSD) package demo.\r\n1. Continue\r\n2. Cancel" This is the message that will be 
-displayed on the user's phone. This contains the menus.
+You are seeing this message because, by default, we are using a General plain-text based gateway provider.
 
-If you use the application on your phone you will be given an input field to enter your response. Right now since we are
-using our browser's address bar as our simulator, we can pass our input to our USSD application using the GET parameter:
-_ussdString_. 
+What does this mean?
 
-Before we do that, since the interaction between the USSD Gateway Provider and our application is stateless, we will 
-need to pass a sessionId with every request. For our Plain-Text Gateway Provider, we will use the field name _sessionId_  
+1. _CON_ tells the user's phone that we are expecting a response and so an input field will be provided to the user.
+2. "Welcome to PHP USSD (PhUSSD) package demo.\r\n1. Continue\r\n2. Cancel" This is the message that will be displayed on the user's phone. 
+
+If you use a simulator will be given an input field to enter your response. However, since we are using our browser as a simulator, we can pass our input to our USSD application using the _ussdString_ GET parameter.
+
+Before we do that, since the interaction between the USSD Gateway Provider and our application is stateless, we will need to pass a sessionId with every request. For our Plain-Text Gateway Provider, we will use the field name _sessionId_  
 NB: This is done automatically for you by the Gateway Provider.
 
 So visit `http://127.0.0.1:8000/ussd-app?sessionId=RANDOM_STRING_TO_IDENTIFY_SESSION`, you will get an identical 
@@ -84,6 +85,4 @@ END Done. You entered: 1
 ```
 A break down of the message:  
 1. END: This tells the user's phone that we are NOT expecting a response and so NO input field will be shown to the user
-2. Message: "Done. You entered: 1" This is the message that will be displayed on the user's phone. In this example it 
-displayes the user's input.
-
+2. Message: "Done. You entered: 1" This is the message that will be displayed on the user's phone. In this example, it displays the user's input.

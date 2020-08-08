@@ -1,22 +1,14 @@
 # Simple and Customisable USSD Package/Library for PHP
 
-PHP-USSD is a simple and customisable PHP library for making awesome USSD application
+PHP-USSD is a simple and customisable PHP library for making awesome USSD application.
 
 ## Installation
 
-Use the package manager [Composer](https://getcomposer.org) to install php-ussd.
-
-```bash
-composer require dbilovd/php-ussd
-```
+See [Installation guide](./docs/installation.md)
 
 ## Usage
 
-```php
-<?php
-
-// ...
-```
+See [building your first USSD application](./docs/your-first-ussd-app.md).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -24,4 +16,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[MIT](./LICENSE)
+[MIT](./LICENSE.md)

@@ -2,9 +2,9 @@
 
 ## Laravel Installation
 ### Requirements
-The following must be met when using this library with Laravel
-* PHP >= 7.1
-* Laravel >= 5.8
+Currently, the following system requirements must be met when using this library with Laravel.
+* PHP >= 7.3
+* Laravel >= 7.x
 
 ### Installation
 
@@ -12,15 +12,22 @@ The following must be met when using this library with Laravel
 You may install this package using Composer
 
 ```
-composer require dbilovd/php-ussd@dev-master
+composer require dbilovd/php-ussd
 ```
+
+This will install the latest release. However, since this is a package still in the early stages of development, you can run `composer require dbilovd@php-ussd@dev-master` to have the latest updates.
 
 The `Dbilovd\PHP_USSD\LaravelServiceProvider` will be discovered and registers automatically.
 
-### Configuration
+### Configuration Files
 
-First, you want to publish the configurations files. You can do that using the following commands
+After your installation is complete, you should publish the package's configurations files. You can do that using the following command:
 ```
 php artisan vendor:publish --provider="Dbilovd\PHP_USSD\LaravelServiceProvider"
 ``` 
 This will create a new configuration file named `config/php-ussd.php`
+
+See [Configurations](./configurations.md) for possible configuration options.
+
+
+
