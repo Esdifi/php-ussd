@@ -2,7 +2,6 @@
 
 namespace Dbilovd\PHP_USSD\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
 use Dbilovd\PHP_USSD\Factories\HttpRequestFactory;
 use Dbilovd\PHP_USSD\Factories\PagesFactory;
@@ -10,6 +9,7 @@ use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
 use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
 use Dbilovd\PHP_USSD\Services\CoreControllerService;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 
 class UssdController extends Controller
 {
