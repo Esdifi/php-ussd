@@ -41,9 +41,44 @@ Route::get('/ussd-app', 'USSDApplicationController@home');
 // ...
 ```
 
-NB: You can use a `POST` method or both `POST` and `GET` methods using any of the following:
-* POST: `Route::post('/ussd-app', 'USSDApplicationController@home');`
-* POST & GET: `Route::match([ 'GET', 'POST' ], '/ussd-app', 'USSDApplicationController@home');` 
+You can use a `POST` method or match both `POST` and `GET` methods using any of the following:
+: 
+```php
+<?php
+// POST
+Route::post('/ussd-app', 'USSDApplicationController@home');
+
+// POST & GET
+Route::match(
+  [ 'GET', 'POST' ], 
+  '/ussd-app', 
+  'USSDApplicationController@home'
+); 
+
+```
+
+**NB:** If you are using a `POST` method, you will need to exclude the route from CRSF protection. Add the route `ussd-app` to the `$except` property of the `VerifyCsrfToken` (`app/Http/Middleware/VerifyCsrfToken.php`) middleware. [Learn more](https://laravel.com/docs/7.x/csrf#csrf-excluding-uris)
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
+
+class VerifyCsrfToken extends Middleware
+{
+  /**
+    * The URIs that should be excluded from CSRF verification.
+    *
+    * @var array
+    */
+  protected $except = [
+    'ussd-app'
+  ];
+
+}
+```
 
 Hurray, you have built your very first USSD application. Now, let's use it.
 
