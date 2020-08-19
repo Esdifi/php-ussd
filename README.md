@@ -1,5 +1,7 @@
 # A Simple and Customisable USSD Library for PHP & Laravel
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e015c23179a94698a78f169bb17f643a)](https://app.codacy.com/manual/davidlartey237f/php-ussd?utm_source=github.com&utm_medium=referral&utm_content=dbilovd/php-ussd&utm_campaign=Badge_Grade_Settings)
+
 ![Travis (.org)](https://img.shields.io/travis/dbilovd/php-ussd)
 ![StyleCI](https://github.styleci.io/repos/247583367/shield?style=flat&branch=dev)
 
