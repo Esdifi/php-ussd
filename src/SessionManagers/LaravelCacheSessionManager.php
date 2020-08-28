@@ -7,15 +7,15 @@ use Illuminate\Support\Facades\Cache;
 
 class LaravelCacheSessionManager implements SessionManagersInterface
 {
-	/**
-	 * Generate compound key name
-	 *
-	 * @return string
-	 */
-	protected function generateCompoundKey(...$args)
-	{
-		return implode(".", $args);
-	}
+    /**
+     * Generate compound key name.
+     *
+     * @return string
+     */
+    protected function generateCompoundKey(...$args)
+    {
+        return implode('.', $args);
+    }
 
     /**
      * Check if key exists.
@@ -25,7 +25,7 @@ class LaravelCacheSessionManager implements SessionManagersInterface
      */
     public function exists($key)
     {
-    	return Cache::has($key);
+        return Cache::has($key);
     }
 
     /**
@@ -38,13 +38,13 @@ class LaravelCacheSessionManager implements SessionManagersInterface
      */
     public function setValueOfSubKey($key, $subKey, $value)
     {
-    	$newKeyName = $this->generateCompoundKey($key, $subKey);
+        $newKeyName = $this->generateCompoundKey($key, $subKey);
 
-    	Cache::put($newKeyName, $value);
+        Cache::put($newKeyName, $value);
     }
 
     /**
-     * Get value of a sub key
+     * Get value of a sub key.
      *
      * @param string $key Name of Redis key to fetch
      * @param string $subKey Name of key in hash
@@ -52,19 +52,19 @@ class LaravelCacheSessionManager implements SessionManagersInterface
      */
     public function getValueOfSubKey($key, $subKey)
     {
-    	$newKeyName = $this->generateCompoundKey($key, $subKey);
+        $newKeyName = $this->generateCompoundKey($key, $subKey);
 
-    	return $this->getValueOfKey($newKeyName);
+        return $this->getValueOfKey($newKeyName);
     }
 
     /**
-     * Get value of key
+     * Get value of key.
      *
      * @param string $key Name of key to fetch
      * @return mixed
      */
     public function getValueOfKey($key)
     {
-    	return Cache::get($key);
+        return Cache::get($key);
     }
 }
