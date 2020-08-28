@@ -43,6 +43,18 @@ abstract class BasePage implements PagesContract
     public function __construct($previousPagesUserResponse = null)
     {
         $this->previousPagesUserResponse = $previousPagesUserResponse;
+
+        $this->boot();
+    }
+
+    /**
+     * Use this function to extend functionalities of a Page
+     *
+     * @return void
+     */
+    protected function boot(): void
+    {
+        
     }
 
     /**
