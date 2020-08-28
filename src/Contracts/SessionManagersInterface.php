@@ -23,7 +23,7 @@ interface SessionManagersInterface
     public function setValueOfSubKey($key, $subKey, $value);
 
     /**
-     * Get value of a sub key
+     * Get value of a sub key.
      *
      * @param string $key Name of Redis key to fetch
      * @param string $subKey Name of key in hash
@@ -32,7 +32,7 @@ interface SessionManagersInterface
     public function getValueOfSubKey($key, $subKey);
 
     /**
-     * Get value of key
+     * Get value of key.
      *
      * @param string $key Name of key to fetch
      * @return mixed

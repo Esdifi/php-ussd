@@ -10,8 +10,8 @@ use Dbilovd\PHP_USSD\SessionManagers\RedisSessionManager;
 class SessionManagerFactory
 {
     /**
-     * List of available SessionManagersInterface implementations
-     * 
+     * List of available SessionManagersInterface implementations.
+     *
      * @var array
      */
     protected $managers = [
