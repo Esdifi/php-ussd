@@ -75,7 +75,7 @@ class ScreensFactory
     {
         $initialScreenClassName = $this->getInitialScreenClass();
 
-        return (new $initialScreenClassName($this->request));
+        return new $initialScreenClassName($this->request);
     }
 
     /**
