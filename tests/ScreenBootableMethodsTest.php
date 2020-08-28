@@ -1,6 +1,6 @@
 <?php
 
-use Dbilovd\PHP_USSD\Pages\BasePage;
+use Dbilovd\PHP_USSD\Screens\Screen;
 use PHPUnit\Framework\TestCase;
 
 class ScreenBootableMethodsTest extends TestCase
@@ -13,7 +13,7 @@ class ScreenBootableMethodsTest extends TestCase
     }
 }
 
-class ScreenBootingTestStub extends BasePage
+class ScreenBootingTestStub extends Screen
 {
     protected $customProperty = false;
 

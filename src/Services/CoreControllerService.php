@@ -2,13 +2,13 @@
 
 namespace Dbilovd\PHP_USSD\Services;
 
-use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\Contracts\ScreenContract;
 use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHP_USSD\Factories\PagesFactory;
+use Dbilovd\PHP_USSD\Factories\ScreensFactory;
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
-use Dbilovd\PHP_USSD\Pages\Exception as ExceptionPage;
+use Dbilovd\PHP_USSD\Screens\Exception as ExceptionPage;
 use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
 use Dbilovd\PHP_USSD\Traits\ProcessesUserResponse;
 use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
@@ -32,7 +32,7 @@ class CoreControllerService
      *
      * @var string
      */
-    public $initialPageClassName = \Dbilovd\PHP_USSD\Pages\Home::class;
+    public $initialPageClassName = \Dbilovd\PHP_USSD\Screens\Home::class;
 
     /**
      * Gateway Request object.
@@ -60,12 +60,12 @@ class CoreControllerService
      *
      * @param GatewayProviderContract $gatewayProvider
      * @param SessionManagersInterface $sessionManager
-     * @param PagesFactory $pagesFactoryManager
+     * @param ScreensFactory $pagesFactoryManager
      */
     public function __construct(
         GatewayProviderContract $gatewayProvider,
         SessionManagersInterface $sessionManager,
-        PagesFactory $pagesFactoryManager
+        ScreensFactory $pagesFactoryManager
     ) {
         $this->gatewayRequest = $gatewayProvider->getRequest();
         $this->gatewayResponse = $gatewayProvider->getResponse();
@@ -130,7 +130,7 @@ class CoreControllerService
     /**
      * Get response for this request.
      *
-     * @return PagesContract|bool Instance of page to return or false
+     * @return ScreenContract|bool Instance of page to return or false
      *
      * @throws Exception
      */
