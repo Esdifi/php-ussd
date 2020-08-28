@@ -48,13 +48,12 @@ abstract class BasePage implements PagesContract
     }
 
     /**
-     * Use this function to extend functionalities of a Page
+     * Use this function to extend functionalities of a Page.
      *
      * @return void
      */
     protected function boot(): void
     {
-        
     }
 
     /**
