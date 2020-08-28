@@ -1,4 +1,7 @@
-# Simple and Customisable USSD Package/Library for PHP
+# A Simple and Customisable USSD Library for PHP & Laravel
+
+![Travis (.org)](https://img.shields.io/travis/dbilovd/php-ussd)
+![StyleCI](https://github.styleci.io/repos/247583367/shield?style=flat&branch=dev)
 
 PHP-USSD is a simple and customisable PHP library for making awesome USSD application.
 
