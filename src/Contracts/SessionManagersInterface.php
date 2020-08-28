@@ -5,7 +5,7 @@ namespace Dbilovd\PHP_USSD\Contracts;
 interface SessionManagersInterface
 {
     /**
-     * Redis: Check if key exists.
+     * Check if key exists.
      *
      * @param string $key Key to check if it exists
      * @return bool
@@ -13,7 +13,7 @@ interface SessionManagersInterface
     public function exists($key);
 
     /**
-     * Redis: Set harsh key.
+     * Set value of a sub key.
      *
      * @param string $key The key of the hash in redis
      * @param string $subKey The key within the harsh
@@ -23,7 +23,7 @@ interface SessionManagersInterface
     public function setValueOfSubKey($key, $subKey, $value);
 
     /**
-     * Redis: HGet.
+     * Get value of a sub key
      *
      * @param string $key Name of Redis key to fetch
      * @param string $subKey Name of key in hash
@@ -32,7 +32,7 @@ interface SessionManagersInterface
     public function getValueOfSubKey($key, $subKey);
 
     /**
-     * Redis: HGetall.
+     * Get value of key
      *
      * @param string $key Name of key to fetch
      * @return mixed
