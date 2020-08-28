@@ -3,18 +3,10 @@
 namespace Dbilovd\PHP_USSD\Pages;
 
 use Dbilovd\PHP_USSD\Contracts\PagesContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 use Illuminate\Support\Facades\Redis;
 
 abstract class BasePage implements PagesContract
 {
-    /**
-     * Request object.
-     *
-     * @var \Dbilovd\PHP_USSD\Requests
-     */
-    public $request;
-
     /**
      * Default response type.
      *
@@ -46,12 +38,10 @@ abstract class BasePage implements PagesContract
     /**
      * Constructor.
      *
-     * @param $request
      * @param null $previousPagesUserResponse
      */
-    public function __construct(GatewayProviderRequestContract $request, $previousPagesUserResponse = null)
+    public function __construct($previousPagesUserResponse = null)
     {
-        $this->request = $request;
         $this->previousPagesUserResponse = $previousPagesUserResponse;
     }
 
@@ -142,16 +132,6 @@ abstract class BasePage implements PagesContract
     public function responseType()
     {
         return $this->responseType ?: 'end';
-    }
-
-    /**
-     * Send response.
-     *
-     * @return string Response content
-     */
-    public function response()
-    {
-        return $this->request->response($this);
     }
 
     /**
