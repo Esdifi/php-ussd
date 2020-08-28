@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Pages;
+namespace Dbilovd\PHP_USSD\Screens;
 
-class HomeResponsePage extends BasePage
+class HomeResponsePage extends Screen
 {
     /**
      * Type of USSD Response given by this page.

@@ -2,7 +2,7 @@
 
 namespace Dbilovd\PHP_USSD\Contracts;
 
-interface PagesContract
+interface ScreenContract
 {
     /**
      * Returns a list of sub menus.
@@ -28,15 +28,15 @@ interface PagesContract
     /**
      * Return an instance of the next child class depending on the user input.
      *
-     * @param string $userResponse The user's response to being presented this page
-     * @return PagesContract
+     * @param string $userResponse The user's response to being presented this screen
+     * @return ScreenContract
      */
     public function next($userResponse);
 
     /**
      * Save the user response.
      *
-     * @param string $userResponse The user's response to being presented this page
+     * @param string $userResponse The user's response to being presented this screen
      * @param $sessionId
      * @return bool
      */

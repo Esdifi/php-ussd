@@ -1,11 +1,11 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Pages;
+namespace Dbilovd\PHP_USSD\Screens;
 
-use Dbilovd\PHP_USSD\Contracts\PagesContract;
+use Dbilovd\PHP_USSD\Contracts\ScreenContract;
 use Illuminate\Support\Facades\Redis;
 
-abstract class BasePage implements PagesContract
+abstract class Screen implements ScreenContract
 {
     /**
      * Default response type.
@@ -88,7 +88,7 @@ abstract class BasePage implements PagesContract
      * Return an instance of the next child class depending on the user input.
      *
      * @param string $userResponse
-     * @return \Dbilovd\PHP_USSD\Contracts\PagesContract
+     * @return \Dbilovd\PHP_USSD\Contracts\ScreenContract
      */
     public function next($userResponse)
     {

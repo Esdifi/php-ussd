@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Pages;
+namespace Dbilovd\PHP_USSD\Screens;
 
-class Exception extends BasePage
+class Exception extends Screen
 {
     /**
      * Message.

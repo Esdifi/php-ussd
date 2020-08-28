@@ -1,8 +1,16 @@
 <?php
 
-use Dbilovd\PHP_USSD\Pages\Home;
+use Dbilovd\PHP_USSD\Screens\Home;
 
 return [
+    /**
+     * The default USSD Gateway Provider to our application.
+     */
     'defaultServiceProvider'	=> env('DEFAULT_USSD_PROVIDER', 'general'),
-    'initialPageClass'          => env('PHP_USSD_INITIAL_PAGE', Home::class),
+
+    /**
+     * The entry screen for the application.
+     */
+    'initialScreenClass'       	=> env('PHP_USSD_INITIAL_SCREEN', Home::class),
+
 ];

@@ -7,6 +7,6 @@ use Exception;
 /**
  * Exception class Invalid Option Selected.
  */
-class InvalidPageForNewSessionException extends Exception
+class InvalidScreenForNewSessionException extends Exception
 {
 }

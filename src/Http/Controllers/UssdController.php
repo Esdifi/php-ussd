@@ -4,7 +4,7 @@ namespace Dbilovd\PHP_USSD\Http\Controllers;
 
 use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
 use Dbilovd\PHP_USSD\Factories\HttpRequestFactory;
-use Dbilovd\PHP_USSD\Factories\PagesFactory;
+use Dbilovd\PHP_USSD\Factories\ScreensFactory;
 use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
 use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
 use Dbilovd\PHP_USSD\Services\CoreControllerService;
@@ -29,7 +29,7 @@ class UssdController extends Controller
         $gatewayProvider = (new GatewayRequestProcessorFactory($config))
             ->make($httpRequest);
 
-        $pagesFactory = (new PagesFactory($gatewayProvider->getRequest(), $config));
+        $pagesFactory = (new ScreensFactory($gatewayProvider->getRequest(), $config));
 
         return (new CoreControllerService($gatewayProvider, $sessionManager, $pagesFactory))
             ->handle();
