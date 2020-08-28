@@ -12,13 +12,6 @@ interface PagesContract
     public function menus();
 
     /**
-     * Return response to be sent.
-     *
-     * @return string Response content
-     */
-    public function response();
-
-    /**
      * Return the type of response to be sent.
      *
      * @return string Response content
