@@ -3,7 +3,7 @@
 namespace Dbilovd\PHP_USSD\Traits;
 
 use Dbilovd\PHP_USSD\Exceptions\InvalidOptionSelectedException;
-use Dbilovd\PHP_USSD\Exceptions\InvalidPageForNewSessionException;
+use Dbilovd\PHP_USSD\Exceptions\InvalidScreenForNewSessionException;
 
 trait ThrowsExceptions
 {
@@ -22,9 +22,9 @@ trait ThrowsExceptions
      *
      * @return void
      */
-    protected function throwInvalidPageForNewSessionException()
+    protected function throwInvalidScreenForNewSessionException()
     {
-        throw new InvalidPageForNewSessionException('Invalid option selected. No previous requests found.');
+        throw new InvalidScreenForNewSessionException('Invalid option selected. No previous requests found.');
     }
 
     /**
@@ -34,6 +34,6 @@ trait ThrowsExceptions
      */
     protected function throwErrorWhileSavingResponseException()
     {
-        throw new InvalidPageForNewSessionException('An error occured while saving data.');
+        throw new InvalidScreenForNewSessionException('An error occured while saving data.');
     }
 }

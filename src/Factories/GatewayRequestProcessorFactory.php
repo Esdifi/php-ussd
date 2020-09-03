@@ -15,6 +15,7 @@ class GatewayRequestProcessorFactory
     protected $processors = [
         'general'	=> \Dbilovd\PHP_USSD\GatewayProviders\General\Provider::class,
         'hubtel'	=> \Dbilovd\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
+        'nalo'      => \Dbilovd\PHP_USSD\GatewayProviders\Nalo\Provider::class,
     ];
 
     /**
