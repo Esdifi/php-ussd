@@ -157,7 +157,7 @@ class Request implements GatewayProviderRequestContract
      */
     public function isCancellationRequest()
     {
-    	return false;
+        return false;
     }
 
     /**
@@ -187,7 +187,7 @@ class Request implements GatewayProviderRequestContract
      */
     public function isTimeoutRequest()
     {
-    	return false;
+        return false;
     }
 
     /** TEMPORAL METHOD. TO BE REMOVED IN FAVOUR OF PROVIDER PROCESSOR KNOWING THEIR RESPONSE PROCESSOR CLASS */
@@ -195,5 +195,4 @@ class Request implements GatewayProviderRequestContract
     {
         return (new Response())->format($page);
     }
-
 }
