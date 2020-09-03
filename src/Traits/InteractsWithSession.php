@@ -61,7 +61,7 @@ trait InteractsWithSession
     {
         $sessionStoreId = $this->getSessionStoreIdString();
         if (! $this->sessionManager->exists($sessionStoreId, 'lastPage')) {
-            $this->throwInvalidPageForNewSessionException();
+            $this->throwInvalidScreenForNewSessionException();
         }
 
         return $this->sessionManager->getValueOfSubKey($sessionStoreId, 'lastPage');
