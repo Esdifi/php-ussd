@@ -3,12 +3,11 @@
 namespace Dbilovd\PHP_USSD\GatewayProviders\Nalo;
 
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
-use Dbilovd\PHP_USSD\GatewayProviders\Nalo\Request;
 
 class Response implements GatewayProviderResponseContract
 {
     /**
-     * Request object
+     * Request object.
      *
      * @var Dbilovd\PHP_USSD\GatewayProviders\Nalo\Request
      */
@@ -22,12 +21,11 @@ class Response implements GatewayProviderResponseContract
     public $responseContentType = 'application/json';
 
     /**
-     * Constructor
-     *
+     * Constructor.
      */
     public function __construct(Request $request)
     {
-    	$this->request = $request;
+        $this->request = $request;
     }
 
     /**
