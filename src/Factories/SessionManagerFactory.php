@@ -45,7 +45,7 @@ class SessionManagerFactory
     {
         $sessionManagerKey = $this->config->get('php-ussd.defaultSessionManager');
 
-        if (! $sessionManagerKey || ! array_key_exists($sessionManagerKey, $this->processors)) {
+        if (! $sessionManagerKey || ! array_key_exists($sessionManagerKey, $this->managers)) {
             $sessionManagerKey = 'laravel-cache';
         }
 
