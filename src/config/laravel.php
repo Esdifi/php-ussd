@@ -10,7 +10,7 @@ return [
 
     /**
      * Set the default method of saving and managing cache data
-     * Options: laravel-cache (default), redis
+     * Options: laravel-cache (default), redis.
      */
     'defaultSessionManager'		=> env('DEFAULT_USSD_SESSION_MANAGER', 'laravel-cache'),
 
