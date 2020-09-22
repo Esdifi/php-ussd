@@ -163,8 +163,7 @@ class Request implements GatewayProviderRequestContract
      */
     public function isValidRequest()
     {
-        return true;
-        // return (! empty($this->getMSISDN()) && ! empty($this->getServiceCode()));
+        return (! empty($this->getMSISDN()) && ! empty($this->getServiceCode()));
     }
 
     /** TEMPORAL METHOD. TO BE REMOVED IN FAVOUR OF PROVIDER PROCESSOR KNOWING THEIR RESPONSE PROCESSOR CLASS */
