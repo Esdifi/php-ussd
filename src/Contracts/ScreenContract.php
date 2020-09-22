@@ -53,7 +53,7 @@ interface ScreenContract
     /**
      * Return the key that will be used to store user response to this screen
      * By default this returns the $this->dateFieldKey
-     * A Screen can overide this method to return a dynamic key
+     * A Screen can overide this method to return a dynamic key.
      *
      * @return string|bool     Field key string or false if no key is set
      */
