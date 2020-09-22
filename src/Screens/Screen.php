@@ -3,10 +3,29 @@
 namespace Dbilovd\PHP_USSD\Screens;
 
 use Dbilovd\PHP_USSD\Contracts\ScreenContract;
+use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
+use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
+use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
 use Illuminate\Support\Facades\Redis;
 
 abstract class Screen implements ScreenContract
 {
+    use InteractsWithSession;
+
+    /**
+     * Gateway request.
+     *
+     * @var Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract
+     */
+    public $gatewayRequest;
+
+    /**
+     * Gateway request.
+     *
+     * @var
+     */
+    public $sessionManager;
+
     /**
      * Default response type.
      *
@@ -40,8 +59,11 @@ abstract class Screen implements ScreenContract
      *
      * @param null $previousPagesUserResponse
      */
-    public function __construct($previousPagesUserResponse = null)
+    public function __construct($gatewayRequest, $previousPagesUserResponse = null)
     {
+        $config = new LaravelConfiguration();
+        $this->sessionManager = (new SessionManagerFactory($config))->make();
+        $this->gatewayRequest = $gatewayRequest;
         $this->previousPagesUserResponse = $previousPagesUserResponse;
 
         $this->boot();
@@ -54,6 +76,18 @@ abstract class Screen implements ScreenContract
      */
     protected function boot(): void
     {
+    }
+
+    /**
+     * Return the key that will be used to store user response to this screen
+     * By default this returns the $this->dateFieldKey
+     * A Screen can overide this method to return a dynamic key.
+     *
+     * @return string|bool     Field key string or false if no key is set
+     */
+    public function dataFieldKey()
+    {
+        return $this->dataFieldKey ?? false;
     }
 
     /**
@@ -115,7 +149,8 @@ abstract class Screen implements ScreenContract
     {
         $preparedUserResponse = $this->preparedUserResponse($userResponse);
 
-        if (property_exists($this, 'dataFieldKey') && $preparedUserResponse) {
+        $keyToUseInSavingData = $this->dataFieldKey();
+        if ($keyToUseInSavingData && $preparedUserResponse) {
             $existingData = json_decode('{}');
             if (Redis::hExists($sessionId, 'data')) {
                 $existingData = json_decode(
@@ -123,7 +158,7 @@ abstract class Screen implements ScreenContract
                 );
             }
 
-            $existingData->{$this->dataFieldKey} = $preparedUserResponse;
+            $existingData->{$keyToUseInSavingData} = $preparedUserResponse;
 
             Redis::hSet($sessionId, 'data', json_encode($existingData));
         }
