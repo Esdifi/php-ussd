@@ -39,7 +39,7 @@ class Response implements GatewayProviderResponseContract
     public function format($page): string
     {
         $responseType = $this->getResponseType(
-            $page->responseType ?: false
+            $page->responseType() ?: false
         );
         $responseMessage = $page->message();
 
