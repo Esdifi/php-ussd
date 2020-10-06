@@ -103,12 +103,12 @@ class CoreControllerService
                 throw new Exception('Timeout: You took too long to respond. Kindly try again.');
             }
 
+            $this->initialiseSession();
+
             if ($this->gatewayRequest->isInitialRequest()) {
                 $page = $this->pagesFactoryManager->make('initial');
                 $this->sessionSetLastPage(get_class($page));
             }
-
-            $this->initialiseSession();
 
             $page = $page ?: $this->constructResponsePage();
 
