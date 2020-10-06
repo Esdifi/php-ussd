@@ -164,7 +164,7 @@ abstract class Screen implements ScreenContract
         }
 
         if (method_exists($this, 'fireEvents')) {
-            $this->fireEvents($sessionId);
+            $this->fireEvents($sessionId, $userResponse);
         }
 
         return true;
