@@ -41,7 +41,7 @@ class Response implements GatewayProviderResponseContract
         $responseMessage = $page->message();
 
         $responseType = $this->getResponseType(
-            $page->responseType ?: false
+            $page->responseType() ?: false
         );
 
         return json_encode([

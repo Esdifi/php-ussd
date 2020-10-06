@@ -22,6 +22,7 @@ trait InteractsWithSession
     protected function initialiseSession()
     {
         $sessionStoreId = $this->getSessionStoreIdString();
+
         if (! $this->sessionManager->exists($sessionStoreId)) {
             $this->sessionManager->setValueOfSubKey($sessionStoreId, 'initialised', time());
             $this->sessionManager->setValueOfSubKey($sessionStoreId, 'phone', $this->gatewayRequest->getMSISDN());

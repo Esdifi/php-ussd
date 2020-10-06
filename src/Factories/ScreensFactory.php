@@ -6,10 +6,11 @@ use Dbilovd\PHP_USSD\Contracts\ScreenContract;
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
 use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
 use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
+use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
 
 class ScreensFactory
 {
-    use InteractsWithSession;
+    use InteractsWithSession, ThrowsExceptions;
 
     /**
      * Request object.
