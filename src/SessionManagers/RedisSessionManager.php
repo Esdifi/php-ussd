@@ -28,6 +28,8 @@ class RedisSessionManager implements SessionManagersInterface
      */
     public function setValueOfSubKey($key, $subKey, $value)
     {
+
+        \Log::debug("Redis Setting value of sub key", compact('key', 'subKey', 'value'));
         Redis::hSet($key, $subKey, $value);
     }
 
