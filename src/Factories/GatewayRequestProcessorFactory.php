@@ -13,9 +13,10 @@ class GatewayRequestProcessorFactory
      * @var array
      */
     protected $processors = [
-        'general'	=> \Dbilovd\PHP_USSD\GatewayProviders\General\Provider::class,
-        'hubtel'	=> \Dbilovd\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
-        'nalo'      => \Dbilovd\PHP_USSD\GatewayProviders\Nalo\Provider::class,
+        'general'           => \Dbilovd\PHP_USSD\GatewayProviders\General\Provider::class,
+        'hubtel'            => \Dbilovd\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
+        'nalo'              => \Dbilovd\PHP_USSD\GatewayProviders\Nalo\Provider::class,
+        'africastalking'    => \Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking\Provider::class,
     ];
 
     /**
