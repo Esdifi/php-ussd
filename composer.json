@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "illuminate/routing": "^7.24"
+        "illuminate/routing": ">7.24"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": ">8.0"
     },
     "autoload": {
         "psr-4": {
