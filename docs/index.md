@@ -1,14 +1,16 @@
-# A Simple and Customisable USSD Library for PHP & Laravel
+# Home
+
+## Welcome to PHP-USSD Library
 
 PHP-USSD is a simple and customisable PHP library for making awesome USSD application.
 
 ## Installation
 
-See [Installation guide](./docs/installation.md)
+See [Installation guide](./installation.md)
 
 ## Usage
 
-See [building your first USSD application](./docs/your-first-ussd-app.md).
+See [building your first USSD application](./your-first-ussd-app.md).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
