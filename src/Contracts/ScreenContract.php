@@ -58,4 +58,11 @@ interface ScreenContract
      * @return string|bool     Field key string or false if no key is set
      */
     public function dataFieldKey();
+
+    /**
+     * Run this function before response is sent back to the user.
+     *
+     * @return void
+     */
+    public function beforeResponseHook();
 }

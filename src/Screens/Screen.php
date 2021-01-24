@@ -189,4 +189,13 @@ abstract class Screen implements ScreenContract
     {
         return $this->message;
     }
+
+    /**
+     * Run this function before response is sent back to the user.
+     *
+     * @return void
+     */
+    public function beforeResponseHook()
+    {
+    }
 }
