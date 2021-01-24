@@ -123,6 +123,10 @@ class CoreControllerService
         // Construct Response based on page to be returned
         $response = $this->gatewayResponse->format($page);
 
+        if (method_exists($page, 'beforeResponseHook')) {
+            $page->beforeResponseHook();
+        }
+
         return response($response)
             ->header('Content-type', $this->gatewayResponse->responseContentType);
     }
