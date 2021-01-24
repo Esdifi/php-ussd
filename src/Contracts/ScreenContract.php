@@ -60,7 +60,7 @@ interface ScreenContract
     public function dataFieldKey();
 
     /**
-     * Run this function before response is sent back to the user
+     * Run this function before response is sent back to the user.
      *
      * @return void
      */
