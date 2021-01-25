@@ -6,7 +6,6 @@ use Dbilovd\PHP_USSD\Contracts\ScreenContract;
 use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
 use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
 use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
-use Illuminate\Support\Facades\Redis;
 
 abstract class Screen implements ScreenContract
 {
@@ -152,15 +151,18 @@ abstract class Screen implements ScreenContract
         $keyToUseInSavingData = $this->dataFieldKey();
         if ($keyToUseInSavingData && $preparedUserResponse) {
             $existingData = json_decode('{}');
-            if (Redis::hExists($sessionId, 'data')) {
-                $existingData = json_decode(
-                    Redis::hGet($sessionId, 'data')
-                );
+
+            if ($this->sessionManager->exists($sessionId, 'data')) {
+                $existingData = $this->sessionManager->getValueOfSubKey($sessionId, 'data');
+                $existingData = json_decode($existingData ?: '{}');
             }
 
             $existingData->{$keyToUseInSavingData} = $preparedUserResponse;
-
-            Redis::hSet($sessionId, 'data', json_encode($existingData));
+            $this->sessionManager->setValueOfSubKey(
+                $sessionId,
+                'data',
+                json_encode($existingData)
+            );
         }
 
         if (method_exists($this, 'fireEvents')) {
