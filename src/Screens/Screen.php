@@ -6,7 +6,6 @@ use Dbilovd\PHP_USSD\Contracts\ScreenContract;
 use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
 use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
 use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
-use Illuminate\Support\Facades\Redis;
 
 abstract class Screen implements ScreenContract
 {
@@ -155,7 +154,7 @@ abstract class Screen implements ScreenContract
 
             if ($this->sessionManager->exists($sessionId, 'data')) {
                 $existingData = $this->sessionManager->getValueOfSubKey($sessionId, 'data');
-                $existingData = json_decode($existingData ?: "{}");
+                $existingData = json_decode($existingData ?: '{}');
             }
 
             $existingData->{$keyToUseInSavingData} = $preparedUserResponse;
