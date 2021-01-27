@@ -66,7 +66,7 @@ class Request implements GatewayProviderRequestContract
     protected $httpRequest;
 
     /**
-     * Session manager
+     * Session manager.
      *
      * @var
      */
@@ -102,28 +102,28 @@ class Request implements GatewayProviderRequestContract
     {
         if ($this->isInitialRequest()) {
             $existingIds = json_decode(
-                $this->sessionManager->getValueOfKey("nalo_session_ids"), true
+                $this->sessionManager->getValueOfKey('nalo_session_ids'), true
             );
-            if (!$existingIds) {
+            if (! $existingIds) {
                 $existingIds = [];
             }
             $existingIds[$this->getMSISDN()] = $this->generateUniqueStringForSessionId();
             $this->sessionManager->setValueOfKey(
-                "nalo_session_ids",
+                'nalo_session_ids',
                 json_encode($existingIds)
             );
         }
 
         $existingIds = json_decode(
-            $this->sessionManager->getValueOfKey("nalo_session_ids"), true
+            $this->sessionManager->getValueOfKey('nalo_session_ids'), true
         );
 
-        return "nalo_" . $existingIds[$this->getMSISDN()];
+        return 'nalo_'.$existingIds[$this->getMSISDN()];
     }
 
     /**
      * Fetch value of the session field.
-     * This is useful since Nalo's session ID will be generated at our end
+     * This is useful since Nalo's session ID will be generated at our end.
      *
      * @return string USSD String
      */
@@ -237,9 +237,9 @@ class Request implements GatewayProviderRequestContract
     }
 
     /**
-     * Generate a unique string to be used as the session id for this request
+     * Generate a unique string to be used as the session id for this request.
      *
-     * @return String Random string
+     * @return string Random string
      */
     protected function generateUniqueStringForSessionId()
     {
