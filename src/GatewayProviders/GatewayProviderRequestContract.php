@@ -7,9 +7,10 @@ interface GatewayProviderRequestContract
     /**
      * Fetch session ID for current request.
      *
+     * @param boolean $initialisingSession Default false
      * @return string Session ID
      */
-    public function getSessionId();
+    public function getSessionId($initialisingSession = false);
 
     /**
      * Fetch USSD string for current request.

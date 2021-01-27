@@ -96,29 +96,25 @@ class Request implements GatewayProviderRequestContract
     /**
      * Fetch session ID for current request.
      *
+     * @param boolean $initialisingSession Default false
      * @return string Session ID
      */
-    public function getSessionId()
+    public function getSessionId($initialisingSession = false)
     {
-        if ($this->isInitialRequest()) {
-            $existingIds = json_decode(
-                $this->sessionManager->getValueOfKey('nalo_session_ids'), true
-            );
-            if (! $existingIds) {
-                $existingIds = [];
-            }
-            $existingIds[$this->getMSISDN()] = $this->generateUniqueStringForSessionId();
-            $this->sessionManager->setValueOfKey(
+        if ($initialisingSession && $this->isInitialRequest()) {
+            $this->sessionManager->setValueOfSubKey(
                 'nalo_session_ids',
-                json_encode($existingIds)
+                $this->getMSISDN(),
+                $this->generateUniqueStringForSessionId()
             );
         }
 
-        $existingIds = json_decode(
-            $this->sessionManager->getValueOfKey('nalo_session_ids'), true
+        $sessionId = $this->sessionManager->getValueOfSubKey(
+            'nalo_session_ids',
+            $this->getMSISDN(),
         );
 
-        return 'nalo_'.$existingIds[$this->getMSISDN()];
+        return "nalo_{$this->getMSISDN()}_{$sessionId}";
     }
 
     /**

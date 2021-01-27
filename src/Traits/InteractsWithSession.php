@@ -21,7 +21,8 @@ trait InteractsWithSession
      */
     protected function initialiseSession()
     {
-        $sessionStoreId = $this->getSessionStoreIdString();
+        $sessionId = $this->gatewayRequest->getSessionId(true);
+        $sessionStoreId = "ussd_session_{$sessionId}";
 
         if (! $this->sessionManager->exists($sessionStoreId)) {
             $this->sessionManager->setValueOfSubKey($sessionStoreId, 'initialised', time());
