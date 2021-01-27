@@ -42,8 +42,7 @@ class GatewayRequestProcessorFactory
     public function __construct(
         ConfigurationManagerContract $config,
         SessionManagersInterface $sessionManager = null
-    )
-    {
+    ) {
         $this->config = $config;
         $this->sessionManager = $sessionManager;
     }
