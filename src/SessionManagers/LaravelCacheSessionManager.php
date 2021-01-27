@@ -29,6 +29,18 @@ class LaravelCacheSessionManager implements SessionManagersInterface
     }
 
     /**
+     * Set value of a key.
+     *
+     * @param string $key The key of the hash in redis
+     * @param mixed $value The value to set for that subkey
+     * @return void
+     */
+    public function setValueOfKey($key, $value)
+    {
+        Cache::put($key, $value);
+    }
+
+    /**
      * Set value of a sub key.
      *
      * @param string $key The key of the hash in redis
@@ -40,7 +52,7 @@ class LaravelCacheSessionManager implements SessionManagersInterface
     {
         $newKeyName = $this->generateCompoundKey($key, $subKey);
 
-        Cache::put($newKeyName, $value);
+        $this->setValueOfKey($newKeyName, $value);
     }
 
     /**

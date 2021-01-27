@@ -19,6 +19,18 @@ class RedisSessionManager implements SessionManagersInterface
     }
 
     /**
+     * Set value of a key.
+     *
+     * @param string $key The key of the hash in redis
+     * @param mixed $value The value to set for that subkey
+     * @return void
+     */
+    public function setValueOfKey($key, $value)
+    {
+        Redis::set($key, $value);
+    }
+
+    /**
      * Redis: Set value of hash key.
      *
      * @param string $key The key of the hash in redis
