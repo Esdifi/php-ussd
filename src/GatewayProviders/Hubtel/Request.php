@@ -95,7 +95,7 @@ class Request implements GatewayProviderRequestContract
     /**
      * Fetch session ID for current request.
      *
-     * @param boolean $initialisingSession Default false
+     * @param bool $initialisingSession Default false
      * @return string Session ID
      */
     public function getSessionId($initialisingSession = false)
