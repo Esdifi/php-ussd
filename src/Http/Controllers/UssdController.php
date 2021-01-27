@@ -26,7 +26,7 @@ class UssdController extends Controller
 
         $sessionManager = (new SessionManagerFactory($config))->make();
 
-        $gatewayProvider = (new GatewayRequestProcessorFactory($config))
+        $gatewayProvider = (new GatewayRequestProcessorFactory($config, $sessionManager))
             ->make($httpRequest);
 
         $pagesFactory = (new ScreensFactory($gatewayProvider->getRequest(), $config));

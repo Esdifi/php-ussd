@@ -61,7 +61,7 @@ class Response implements GatewayProviderResponseContract
         );
 
         return json_encode([
-            'USERID' 	=> $this->request->getSessionId(),
+            'USERID' 	=> $this->request->getSessionFieldValue(),
             'MSISDN' 	=> $this->request->getMSISDN(),
             'MSG' 		=> $responseMessage,
             'MSGTYPE' 	=> $responseType ? true : false,

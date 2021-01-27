@@ -2,6 +2,7 @@
 
 namespace Dbilovd\PHP_USSD\Factories;
 
+use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
 use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
 
@@ -27,13 +28,24 @@ class GatewayRequestProcessorFactory
     protected $config;
 
     /**
+     * Session manager.
+     *
+     * @var SessionManagerInterface
+     */
+    protected $sessionManager;
+
+    /**
      * Constructor.
      *
      * @param ConfigurationManagerContract $config
      */
-    public function __construct(ConfigurationManagerContract $config)
+    public function __construct(
+        ConfigurationManagerContract $config,
+        SessionManagersInterface $sessionManager = null
+    )
     {
         $this->config = $config;
+        $this->sessionManager = $sessionManager;
     }
 
     /**
@@ -49,6 +61,6 @@ class GatewayRequestProcessorFactory
             $gatewayProviderKey = 'general';
         }
 
-        return new $this->processors[$gatewayProviderKey]($httpRequest);
+        return new $this->processors[$gatewayProviderKey]($httpRequest, $this->sessionManager);
     }
 }

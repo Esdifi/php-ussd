@@ -3,9 +3,12 @@
 namespace Dbilovd\PHP_USSD\GatewayProviders\Nalo;
 
 use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
 
 class Request implements GatewayProviderRequestContract
 {
+    use InteractsWithSession;
+
     /**
      * Response header content type.
      *
@@ -63,13 +66,21 @@ class Request implements GatewayProviderRequestContract
     protected $httpRequest;
 
     /**
+     * Session manager
+     *
+     * @var
+     */
+    protected $sessionManager;
+
+    /**
      * Constructor.
      *
      * @return void
      */
-    public function __construct($httpRequest)
+    public function __construct($httpRequest, $sessionManager)
     {
         $this->httpRequest = $httpRequest;
+        $this->sessionManager = $sessionManager;
     }
 
     /**
@@ -88,6 +99,35 @@ class Request implements GatewayProviderRequestContract
      * @return string Session ID
      */
     public function getSessionId()
+    {
+        if ($this->isInitialRequest()) {
+            $existingIds = json_decode(
+                $this->sessionManager->getValueOfKey("nalo_session_ids"), true
+            );
+            if (!$existingIds) {
+                $existingIds = [];
+            }
+            $existingIds[$this->getMSISDN()] = $this->generateUniqueStringForSessionId();
+            $this->sessionManager->setValueOfKey(
+                "nalo_session_ids",
+                json_encode($existingIds)
+            );
+        }
+
+        $existingIds = json_decode(
+            $this->sessionManager->getValueOfKey("nalo_session_ids"), true
+        );
+
+        return "nalo_" . $existingIds[$this->getMSISDN()];
+    }
+
+    /**
+     * Fetch value of the session field.
+     * This is useful since Nalo's session ID will be generated at our end
+     *
+     * @return string USSD String
+     */
+    public function getSessionFieldValue()
     {
         return $this->httpRequest->get($this->sessionIdFieldName);
     }
@@ -194,5 +234,15 @@ class Request implements GatewayProviderRequestContract
     public function response($page)
     {
         return (new Response())->format($page);
+    }
+
+    /**
+     * Generate a unique string to be used as the session id for this request
+     *
+     * @return String Random string
+     */
+    protected function generateUniqueStringForSessionId()
+    {
+        return ceil(rand(1000, 9999) * 10000);
     }
 }
