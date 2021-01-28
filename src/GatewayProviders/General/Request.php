@@ -62,20 +62,21 @@ class Request implements GatewayProviderRequestContract
     /**
      * Fetch session ID for current request.
      *
-     * @return string Session ID
-     */
-    public function getSessionId()
-    {
-        return $this->httpRequest->get($this->sessionIdFieldName);
-    }
-
-    /**
-     * Fetch session ID for current request.
-     *
      * @param boolean $initialisingSession Default false
      * @return string Session ID
      */
     public function getSessionId($initialisingSession = false)
+    {
+        return $this->httpRequest->get($this->sessionIdFieldName);
+    }
+
+
+    /**
+     * Fetch USSD string for current request.
+     *
+     * @return string USSD String
+     */
+    public function getUSSDString()
     {
         return $this->httpRequest->get($this->ussdStringFieldName);
     }
