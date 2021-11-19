@@ -1,5 +1,5 @@
 {
-    "name": "dbilovd/php-ussd",
+    "name": "esdifi/php-ussd",
     "description": "A simple and customisable USSD library for PHP",
     "type": "library",
     "license": "MIT",
