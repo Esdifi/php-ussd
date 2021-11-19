@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders\Nalo;
+namespace Esdifi\PHP_USSD\GatewayProviders\Nalo;
 
-use Dbilovd\PHP_USSD\GatewayProviders\General\Provider as GeneralProvider;
+use Esdifi\PHP_USSD\GatewayProviders\General\Provider as GeneralProvider;
 
 class Provider extends GeneralProvider
 {

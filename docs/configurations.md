@@ -8,14 +8,14 @@ You can create a Screen anywhere in your application. We will be using the folde
 classes.
 
 For our initial screen, let us call it InitialScreen. I will create it in the folder `app/USSD/Screens/InitialScreen.php` this
-class should extend the `\Dbilovd\PHP_USSD\Screens\Screen` class.
+class should extend the `\Esdifi\PHP_USSD\Screens\Screen` class.
 
 ```
 <?php
 
 namespace App\USSD\Screens;
 
-use Dbilovd\PHP_USSD\Screens\Screen;
+use Esdifi\PHP_USSD\Screens\Screen;
 
 class InitialScreen extends Screen
 {

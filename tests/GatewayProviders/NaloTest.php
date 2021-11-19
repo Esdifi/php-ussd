@@ -1,8 +1,8 @@
 <?php
 
-use Dbilovd\PHP_USSD\GatewayProviders\Nalo\Provider as NaloProvider;
-use Dbilovd\PHP_USSD\GatewayProviders\Nalo\Request as NaloRequest;
-use Dbilovd\PHP_USSD\GatewayProviders\Nalo\Response as NaloResponse;
+use Esdifi\PHP_USSD\GatewayProviders\Nalo\Provider as NaloProvider;
+use Esdifi\PHP_USSD\GatewayProviders\Nalo\Request as NaloRequest;
+use Esdifi\PHP_USSD\GatewayProviders\Nalo\Response as NaloResponse;
 use PHPUnit\Framework\TestCase;
 
 class NaloTest extends TestCase

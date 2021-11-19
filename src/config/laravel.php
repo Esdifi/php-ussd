@@ -1,6 +1,6 @@
 <?php
 
-use Dbilovd\PHP_USSD\Screens\Home;
+use Esdifi\PHP_USSD\Screens\Home;
 
 return [
     /**

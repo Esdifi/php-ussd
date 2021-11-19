@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Screens;
+namespace Esdifi\PHP_USSD\Screens;
 
 class Home extends Screen
 {

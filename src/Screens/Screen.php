@@ -1,11 +1,11 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Screens;
+namespace Esdifi\PHP_USSD\Screens;
 
-use Dbilovd\PHP_USSD\Contracts\ScreenContract;
-use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
-use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
-use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
+use Esdifi\PHP_USSD\Contracts\ScreenContract;
+use Esdifi\PHP_USSD\Factories\SessionManagerFactory;
+use Esdifi\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
+use Esdifi\PHP_USSD\Traits\InteractsWithSession;
 
 abstract class Screen implements ScreenContract
 {
@@ -14,7 +14,7 @@ abstract class Screen implements ScreenContract
     /**
      * Gateway request.
      *
-     * @var Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract
+     * @var Esdifi\PHP_USSD\GatewayProviders\GatewayProviderRequestContract
      */
     public $gatewayRequest;
 
@@ -121,7 +121,7 @@ abstract class Screen implements ScreenContract
      * Return an instance of the next child class depending on the user input.
      *
      * @param string $userResponse
-     * @return \Dbilovd\PHP_USSD\Contracts\ScreenContract
+     * @return \Esdifi\PHP_USSD\Contracts\ScreenContract
      */
     public function next($userResponse)
     {

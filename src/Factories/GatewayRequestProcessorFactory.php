@@ -1,10 +1,10 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Factories;
+namespace Esdifi\PHP_USSD\Factories;
 
-use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Esdifi\PHP_USSD\Contracts\SessionManagersInterface;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Esdifi\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
 
 class GatewayRequestProcessorFactory
 {
@@ -14,10 +14,10 @@ class GatewayRequestProcessorFactory
      * @var array
      */
     protected $processors = [
-        'general'           => \Dbilovd\PHP_USSD\GatewayProviders\General\Provider::class,
-        'hubtel'            => \Dbilovd\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
-        'nalo'              => \Dbilovd\PHP_USSD\GatewayProviders\Nalo\Provider::class,
-        'africastalking'    => \Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking\Provider::class,
+        'general'           => \Esdifi\PHP_USSD\GatewayProviders\General\Provider::class,
+        'hubtel'            => \Esdifi\PHP_USSD\GatewayProviders\Hubtel\Provider::class,
+        'nalo'              => \Esdifi\PHP_USSD\GatewayProviders\Nalo\Provider::class,
+        'africastalking'    => \Esdifi\PHP_USSD\GatewayProviders\AfricasTalking\Provider::class,
     ];
 
     /**

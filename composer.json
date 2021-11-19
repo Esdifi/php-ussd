@@ -1,5 +1,5 @@
 {
-    "name": "dbilovd/php-ussd",
+    "name": "esdifi/php-ussd",
     "description": "A simple and customisable USSD library for PHP",
     "type": "library",
     "license": "MIT",
@@ -17,18 +17,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Dbilovd\\PHP_USSD\\": "src/"
+            "Esdifi\\PHP_USSD\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dbilovd\\PHP_USSD\\Tests\\": "tests/"
+            "Esdifi\\PHP_USSD\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dbilovd\\PHP_USSD\\LaravelServiceProvider"
+                "Esdifi\\PHP_USSD\\LaravelServiceProvider"
             ]
         }
     }

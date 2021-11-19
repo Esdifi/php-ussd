@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders;
+namespace Esdifi\PHP_USSD\GatewayProviders;
 
 interface GatewayProviderResponseContract
 {

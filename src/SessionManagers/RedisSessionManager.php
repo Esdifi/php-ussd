@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\SessionManagers;
+namespace Esdifi\PHP_USSD\SessionManagers;
 
-use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
+use Esdifi\PHP_USSD\Contracts\SessionManagersInterface;
 use Illuminate\Support\Facades\Redis;
 
 class RedisSessionManager implements SessionManagersInterface

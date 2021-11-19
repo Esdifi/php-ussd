@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Helpers;
+namespace Esdifi\PHP_USSD\Helpers;
 
 use Illuminate\Support\Facades\Config;
 

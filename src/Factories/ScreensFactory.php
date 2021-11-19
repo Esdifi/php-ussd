@@ -1,12 +1,12 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Factories;
+namespace Esdifi\PHP_USSD\Factories;
 
-use Dbilovd\PHP_USSD\Contracts\ScreenContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
-use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
-use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
+use Esdifi\PHP_USSD\Contracts\ScreenContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Esdifi\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Esdifi\PHP_USSD\Traits\InteractsWithSession;
+use Esdifi\PHP_USSD\Traits\ThrowsExceptions;
 
 class ScreensFactory
 {
@@ -105,7 +105,7 @@ class ScreensFactory
         $initialScreen = $this->config->get('php-ussd.initialScreenClass');
 
         if (! $initialScreen) {
-            $initialScreen = \Dbilovd\PHP_USSD\Screens\Home::class;
+            $initialScreen = \Esdifi\PHP_USSD\Screens\Home::class;
         }
 
         return $initialScreen;

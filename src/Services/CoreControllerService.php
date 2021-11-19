@@ -1,17 +1,17 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Services;
+namespace Esdifi\PHP_USSD\Services;
 
-use Dbilovd\PHP_USSD\Contracts\ScreenContract;
-use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHP_USSD\Factories\ScreensFactory;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
-use Dbilovd\PHP_USSD\Screens\Exception as ExceptionPage;
-use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
-use Dbilovd\PHP_USSD\Traits\ProcessesUserResponse;
-use Dbilovd\PHP_USSD\Traits\ThrowsExceptions;
+use Esdifi\PHP_USSD\Contracts\ScreenContract;
+use Esdifi\PHP_USSD\Contracts\SessionManagersInterface;
+use Esdifi\PHP_USSD\Factories\ScreensFactory;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
+use Esdifi\PHP_USSD\Screens\Exception as ExceptionPage;
+use Esdifi\PHP_USSD\Traits\InteractsWithSession;
+use Esdifi\PHP_USSD\Traits\ProcessesUserResponse;
+use Esdifi\PHP_USSD\Traits\ThrowsExceptions;
 use Exception;
 
 class CoreControllerService
@@ -32,7 +32,7 @@ class CoreControllerService
      *
      * @var string
      */
-    public $initialPageClassName = \Dbilovd\PHP_USSD\Screens\Home::class;
+    public $initialPageClassName = \Esdifi\PHP_USSD\Screens\Home::class;
 
     /**
      * Gateway Request object.
