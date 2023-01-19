@@ -136,7 +136,7 @@ class ScreensFactory
         $exceptionScreen = $this->config->get('php-ussd.exceptionScreenClass');
 
         if (! $exceptionScreen) {
-            $exceptionScreen = \Dbilovd\PHP_USSD\Screens\Exception::class;
+            $exceptionScreen = \Esdifi\PHP_USSD\Screens\Exception::class;
         }
 
         return $exceptionScreen;
