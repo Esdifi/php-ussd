@@ -1,13 +1,13 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Http\Controllers;
+namespace Esdifi\PHP_USSD\Http\Controllers;
 
-use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
-use Dbilovd\PHP_USSD\Factories\HttpRequestFactory;
-use Dbilovd\PHP_USSD\Factories\ScreensFactory;
-use Dbilovd\PHP_USSD\Factories\SessionManagerFactory;
-use Dbilovd\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
-use Dbilovd\PHP_USSD\Services\CoreControllerService;
+use Esdifi\PHP_USSD\Factories\GatewayRequestProcessorFactory;
+use Esdifi\PHP_USSD\Factories\HttpRequestFactory;
+use Esdifi\PHP_USSD\Factories\ScreensFactory;
+use Esdifi\PHP_USSD\Factories\SessionManagerFactory;
+use Esdifi\PHP_USSD\Managers\Configurations\Laravel as LaravelConfiguration;
+use Esdifi\PHP_USSD\Services\CoreControllerService;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 

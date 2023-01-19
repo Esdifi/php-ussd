@@ -1,9 +1,9 @@
 <?php
 
-use Dbilovd\PHP_USSD\Contracts\ConfigurationManagerInterface;
-use Dbilovd\PHP_USSD\Factories\GatewayRequestProcessorFactory;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHP_USSD\Helpers\HttpRequest;
+use Esdifi\PHP_USSD\Contracts\ConfigurationManagerInterface;
+use Esdifi\PHP_USSD\Factories\GatewayRequestProcessorFactory;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Esdifi\PHP_USSD\Helpers\HttpRequest;
 use PHPUnit\Framework\TestCase;
 
 class GatewayRequestProcessorFactoryTest extends TestCase

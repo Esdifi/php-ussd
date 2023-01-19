@@ -1,15 +1,15 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders\Nalo;
+namespace Esdifi\PHP_USSD\GatewayProviders\Nalo;
 
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
 
 class Response implements GatewayProviderResponseContract
 {
     /**
      * Request object.
      *
-     * @var Dbilovd\PHP_USSD\GatewayProviders\Nalo\Request
+     * @var Esdifi\PHP_USSD\GatewayProviders\Nalo\Request
      */
     protected $request;
 

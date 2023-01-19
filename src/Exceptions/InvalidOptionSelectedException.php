@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Exceptions;
+namespace Esdifi\PHP_USSD\Exceptions;
 
 use Exception;
 

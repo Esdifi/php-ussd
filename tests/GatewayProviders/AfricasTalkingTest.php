@@ -1,8 +1,8 @@
 <?php
 
-use Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking\Provider as ATProvider;
-use Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking\Request as ATRequest;
-use Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking\Response as ATResponse;
+use Esdifi\PHP_USSD\GatewayProviders\AfricasTalking\Provider as ATProvider;
+use Esdifi\PHP_USSD\GatewayProviders\AfricasTalking\Request as ATRequest;
+use Esdifi\PHP_USSD\GatewayProviders\AfricasTalking\Response as ATResponse;
 use PHPUnit\Framework\TestCase;
 
 class AfricasTalkingTest extends TestCase

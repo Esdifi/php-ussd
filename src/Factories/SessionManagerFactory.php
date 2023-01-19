@@ -1,11 +1,11 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Factories;
+namespace Esdifi\PHP_USSD\Factories;
 
-use Dbilovd\PHP_USSD\Contracts\SessionManagersInterface;
-use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
-use Dbilovd\PHP_USSD\SessionManagers\LaravelCacheSessionManager;
-use Dbilovd\PHP_USSD\SessionManagers\RedisSessionManager;
+use Esdifi\PHP_USSD\Contracts\SessionManagersInterface;
+use Esdifi\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Esdifi\PHP_USSD\SessionManagers\LaravelCacheSessionManager;
+use Esdifi\PHP_USSD\SessionManagers\RedisSessionManager;
 
 class SessionManagerFactory
 {
@@ -39,7 +39,7 @@ class SessionManagerFactory
     /**
      * Make a new instace of a Session Manager.
      *
-     * @return \Dbilovd\PHP_USSD\Contracts\SessionManagersInterface
+     * @return \Esdifi\PHP_USSD\Contracts\SessionManagersInterface
      */
     public function make(): SessionManagersInterface
     {

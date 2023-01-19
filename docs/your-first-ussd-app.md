@@ -8,7 +8,7 @@ Before we proceed, ensure you have completed the [installation](./installation.m
 
 ### Controller
 The first thing to do is to set up the Controller that will handle all requests to our USSD application.
-This controller should extend `\Dbilovd\PHP_USSD\Http\Controllers\UssdController`.
+This controller should extend `\Esdifi\PHP_USSD\Http\Controllers\UssdController`.
 
 NB: You can place the controller anywhere in your application. For this guide, we will be placing it in Laravel's default controllers' 
 folder: **_app/Http/Controllers_**.
@@ -17,7 +17,7 @@ folder: **_app/Http/Controllers_**.
 <?php
 namespace App\Http\Controllers;
 
-use Dbilovd\PHP_USSD\Http\Controllers\UssdController;
+use Esdifi\PHP_USSD\Http\Controllers\UssdController;
 
 class USSDApplicationController extends UssdController
 {
@@ -25,7 +25,7 @@ class USSDApplicationController extends UssdController
 }
 ```
 
-The class `Dbilovd\PHP_USSD\Http\Controllers\BaseController` contains a method called `home`. We will be pointing our route to this method.
+The class `Esdifi\PHP_USSD\Http\Controllers\BaseController` contains a method called `home`. We will be pointing our route to this method.
 
 ### Routes
 After setting up our controller, we need to open an endpoint that will handle our requests. Add the following code to your `routes/web.php` file.

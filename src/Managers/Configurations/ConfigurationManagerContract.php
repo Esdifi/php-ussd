@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Managers\Configurations;
+namespace Esdifi\PHP_USSD\Managers\Configurations;
 
 interface ConfigurationManagerContract
 {

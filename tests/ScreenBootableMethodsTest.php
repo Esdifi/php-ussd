@@ -1,6 +1,6 @@
 <?php
 
-use Dbilovd\PHP_USSD\Screens\Screen;
+use Esdifi\PHP_USSD\Screens\Screen;
 use PHPUnit\Framework\TestCase;
 
 class ScreenBootableMethodsTest extends TestCase

@@ -1,10 +1,10 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders\General;
+namespace Esdifi\PHP_USSD\GatewayProviders\General;
 
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
 
 class Provider implements GatewayProviderContract
 {
