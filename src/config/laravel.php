@@ -19,4 +19,9 @@ return [
      */
     'initialScreenClass'       	=> env('PHP_USSD_INITIAL_SCREEN', Home::class),
 
+    /**
+     * The default exception screen for the application.
+     */
+    'exceptionScreenClass'      => env('PHP_USSD_EXCEPTION_SCREEN', false),
+
 ];
