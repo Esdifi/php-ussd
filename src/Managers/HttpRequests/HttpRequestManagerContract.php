@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Managers\HttpRequests;
+namespace Esdifi\PHP_USSD\Managers\HttpRequests;
 
 interface HttpRequestManagerContract
 {

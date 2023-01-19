@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbilovd\PHP_USSD;
+namespace Esdifi\PHP_USSD;
 
 use Illuminate\Support\ServiceProvider;
 

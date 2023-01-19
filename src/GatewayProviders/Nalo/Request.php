@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders\Nalo;
+namespace Esdifi\PHP_USSD\GatewayProviders\Nalo;
 
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
-use Dbilovd\PHP_USSD\Traits\InteractsWithSession;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderRequestContract;
+use Esdifi\PHP_USSD\Traits\InteractsWithSession;
 
 class Request implements GatewayProviderRequestContract
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\GatewayProviders\AfricasTalking;
+namespace Esdifi\PHP_USSD\GatewayProviders\AfricasTalking;
 
-use Dbilovd\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
+use Esdifi\PHP_USSD\GatewayProviders\GatewayProviderResponseContract;
 
 class Response implements GatewayProviderResponseContract
 {

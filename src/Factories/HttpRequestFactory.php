@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Factories;
+namespace Esdifi\PHP_USSD\Factories;
 
-use Dbilovd\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
-use Dbilovd\PHP_USSD\Managers\HttpRequests\Laravel;
+use Esdifi\PHP_USSD\Managers\Configurations\ConfigurationManagerContract;
+use Esdifi\PHP_USSD\Managers\HttpRequests\Laravel;
 
 class HttpRequestFactory
 {

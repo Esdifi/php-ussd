@@ -1,9 +1,9 @@
 <?php
 
-namespace Dbilovd\PHP_USSD\Traits;
+namespace Esdifi\PHP_USSD\Traits;
 
-use Dbilovd\PHP_USSD\Exceptions\InvalidOptionSelectedException;
-use Dbilovd\PHP_USSD\Exceptions\InvalidScreenForNewSessionException;
+use Esdifi\PHP_USSD\Exceptions\InvalidOptionSelectedException;
+use Esdifi\PHP_USSD\Exceptions\InvalidScreenForNewSessionException;
 
 trait ThrowsExceptions
 {
