@@ -13,6 +13,12 @@ class Exception extends Screen
 
     public $responseType = 'end';
 
+    /**
+     * The Exception type that occurred
+     * 
+     */
+    public $exceptionType = '';
+    
     public function setMessage($message)
     {
         $this->message = $message;
