@@ -60,6 +60,9 @@ class ScreensFactory
                 return $this->subsequentScreens($previousScreen, $userResponse);
                 break;
 
+            case 'exception':
+                return $this->exceptionScreen();
+
             case 'initial':
             default:
                 return $this->initialScreen();
@@ -109,5 +112,33 @@ class ScreensFactory
         }
 
         return $initialScreen;
+    }
+
+    /**
+     * Instantiate and return an exception screen.
+     *
+     * @return ScreenContract
+     */
+    protected function initialScreen(): ScreenContract
+    {
+        $exceptionScreenClass = $this->getDefaultExceptionScreenClass();
+
+        return new $exceptionScreenClass($this->request);
+    }
+
+    /**
+     * Fetch and return the default exception screen class to use
+     * 
+     * @return string
+     */
+    protected function getDefaultExceptionScreenClass(): string
+    {
+        $exceptionScreen = $this->config->get('php-ussd.exceptionScreenClass');
+
+        if (! $exceptionScreen) {
+            $exceptionScreen = \Dbilovd\PHP_USSD\Screens\Exception::class;
+        }
+
+        return $exceptionScreen;
     }
 }

@@ -91,15 +91,19 @@ class CoreControllerService
         // - Format and return response
 
         $page = false;
+        $exceptionType = false;
 
         try {
             if (! $this->gatewayRequest->isValidRequest()) {
+                $exceptionType = 'invalid-request';
                 throw new Exception('Error: Bad Request');
             }
             if ($this->gatewayRequest->isCancellationRequest()) {
+                $exceptionType = 'cancelled';
                 throw new Exception('You cancelled the request.');
             }
             if ($this->gatewayRequest->isTimeoutRequest()) {
+                $exceptionType = 'timeout';
                 throw new Exception('Timeout: You took too long to respond. Kindly try again.');
             }
 
@@ -116,8 +120,22 @@ class CoreControllerService
                 throw new Exception('Error: Could not construct new page.');
             }
         } catch (Exception $e) {
-            $page = new ExceptionPage($this->gatewayRequest);
+            $page = $this->pagesFactoryManager->make('exception');
             $page->setMessage($e->getMessage());
+            
+            if (! $this->gatewayRequest->isValidRequest()) {
+                $page->exceptionType = 'invalid-request';
+            }
+            if ($this->gatewayRequest->isCancellationRequest()) {
+                $page->exceptionType = 'cancelled';
+            }
+            if ($this->gatewayRequest->isTimeoutRequest()) {
+                $page->exceptionType = 'timeout';
+            }
+
+            if (method_exists($page, 'fireEvents')) {
+                $page->fireEvents($this->getSessionStoreIdString(), "");
+            }
         }
 
         // Construct Response based on page to be returned
