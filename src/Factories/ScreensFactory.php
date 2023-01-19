@@ -119,7 +119,7 @@ class ScreensFactory
      *
      * @return ScreenContract
      */
-    protected function initialScreen(): ScreenContract
+    protected function exceptionScreen(): ScreenContract
     {
         $exceptionScreenClass = $this->getDefaultExceptionScreenClass();
 
